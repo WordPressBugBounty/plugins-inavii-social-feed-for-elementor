@@ -1,0 +1,35 @@
+<div class="inavii-grid{{ layout_type != '' ? ' swiper inavii-grid__type-' ~ layout_type }} {{ slides_per_column ? 'inavii-swiper-grid-column': '' }}">
+    <div class="swiper-wrapper">
+        {% for index,item in items %}
+            <div class="inavii-grid__{{ layoutView }} swiper-slide inavii-grid__item grid-item {{ img_animation_class }}"
+                 data-index="{{ index }}"
+                    {{ enable_photo_linking == "lightbox" or enable_photo_linking == "popup" ? ' data-micromodal-trigger="modal-' ~ widget_id ~ '"' : '' }}>
+                {% include 'view/front-view/base.twig' with {'index': loop.index} %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% if (enable_photo_linking == "lightbox") %}
+    {% include 'view/lightbox/lightbox.twig' %}
+{% endif %}
+    {% if (enable_photo_linking == "popup") %}
+        {% include 'view/popup/popup.twig' %}
+    {% endif %}
+
+<div class="inavii-carousel-navigation">
+    <div class="swiper-button-next">
+        {% if (navigation_icon_next.icon_class ) %}
+            {{ navigation_icon_next.icon_class }}
+        {% else %}
+            {{ navigation_icon_next.inline_svg }}
+        {% endif %}
+    </div>
+    <div class="swiper-button-prev">
+        {% if (navigation_icon_prev.icon_class ) %}
+            {{ navigation_icon_prev.icon_class }}
+        {% else %}
+            {{ navigation_icon_prev.inline_svg }}
+        {% endif %}
+    </div>
+</div>

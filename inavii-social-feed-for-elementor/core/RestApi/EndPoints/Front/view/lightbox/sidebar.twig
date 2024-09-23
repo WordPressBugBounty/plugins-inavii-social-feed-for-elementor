@@ -1,0 +1,75 @@
+<article class="inner-swiper-slide__sidebar">
+    {% if (enable_avatar_lightbox or username_lightbox_switch) %}
+        <div class="inner-swiper-slide__sidebar-username">
+            {% if (feed_type != 'hashtag_posts') %}
+            <a class="inner-swiper-slide__sidebar-follow-instagram-button" href="{{ follow_button_url }}"
+               target="_blank"
+               rel="nofollow noopener" role="button">
+                {% if (enable_avatar_lightbox) %}
+                    <div class="inavii-grid__avatar-content">
+                        <img class="inavii-grid__avatar-image inavii__image"
+                             src="{{ avatar_url }}"
+                             alt="User avatar"
+                             loading="lazy"
+                        />
+                    </div>
+                {% endif %}
+                {% if (username_lightbox_switch) %}
+                    <span class="inner-swiper-slide__sidebar-username-text">{{ username_lightbox }}</span>
+                {% endif %}
+            </a>
+            {% else %}
+                {% if (username_lightbox_switch) %}
+                    <div class="inner-swiper-slide__sidebar-follow-instagram-button">
+                        {% for hashTag in hashTagPosts %}
+                            <a class="inner-swiper-slide__sidebar-hashtag-text"
+                               href="https://www.instagram.com/explore/tags/{{ hashTag.id }}"
+                               target="_blank"
+                               rel="nofollow noopener" role="button">
+                                #{{ hashTag.id }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="inner-swiper-slide__sidebar-description">
+        {% if is_pro %}
+            {% include 'view/lightbox/sidebar-description-box.twig' %}
+        {% endif %}
+    </div>
+
+    {% if is_pro %}
+        {% include 'view/lightbox/sidebar-info-box.twig' %}
+    {% endif %}
+
+    {% if (enable_lightbox_follow_button or enable_lightbox_icon_follow_button) %}
+        <div class="inner-swiper-slide__sidebar-view-instagram">
+            <a class="inner-swiper-slide__sidebar-view-instagram-button {{ item.promotion__premium_only.buttonModalTitle or item.promotion__premium_only.linkUrl ? 'inner-swiper-slide__sidebar-button-promotion' : '' }}"
+               href="{% if is_promotion and item.promotion__premium_only.linkUrl %}{{ item.promotion__premium_only.linkUrl }}{% else %}{{ item.permalink }}{% endif %}"
+               target="{% if is_promotion and item.promotion__premium_only.target %}{{ item.promotion__premium_only.target }}{% else %}_blank{% endif %}"
+               rel="nofollow noopener" role="button">
+
+                {% if (enable_lightbox_icon_follow_button and not item.promotion__premium_only.buttonModalTitle ) %}
+                    {% if (follow_lightbox_button_icon.icon_class ) %}
+                        {{ follow_lightbox_button_icon.icon_class }}
+                    {% else %}
+                        {{ follow_lightbox_button_icon.inline_svg }}
+                    {% endif %}
+                {% endif %}
+
+                {% if (enable_lightbox_follow_button) %}
+                    <span class="inner-swiper-slide__sidebar-text">
+                        {% if is_promotion and item.promotion__premium_only.buttonModalTitle %}
+                            {{ item.promotion__premium_only.buttonModalTitle }}
+                        {% else %}
+                            {{ follow_lightbox_button_text }}
+                        {% endif %}
+                    </span>
+                {% endif %}
+            </a>
+        </div>
+    {% endif %}
+</article>

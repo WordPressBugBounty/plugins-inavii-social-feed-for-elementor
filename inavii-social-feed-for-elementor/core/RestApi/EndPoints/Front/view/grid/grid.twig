@@ -1,0 +1,25 @@
+{% if (layout_type == 'highlight-focus') %}
+    {% set moduloValue = 9 %}
+    {% set spanValueForRow = 5 %}
+{% endif %}
+
+{% for index,item in items %}
+    {% if (layout_type == 'highlight-focus') %}
+        {% set itemFocus = index % moduloValue == spanValueForRow ? 'true' : 'false'%}
+    {% endif %}
+    <div class="{% if is_pro %}inavii-grid__{{ layoutView }}{% else %}inavii-grid__overlay{% endif %} inavii-grid__item grid-item {{ img_animation_class }} {{ layout_type == 'slider' ? ' swiper-slide' : '' }}"
+         data-index="{{ index }}" role="button" tabindex="0"
+            {{ layout_type == 'highlight-focus' ? ' data-focus="' ~ itemFocus ~ '"' : '' }}
+            {{ enable_photo_linking == "lightbox" or enable_photo_linking == "popup" ? ' data-micromodal-trigger="modal-' ~ widget_id ~ '"' : '' }}>
+        {% include 'view/front-view/base.twig' with {'index': loop.index} %}
+    </div>
+{% endfor %}
+
+{% if (enable_photo_linking == "lightbox") %}
+    {% include 'view/lightbox/lightbox.twig' %}
+{% endif %}
+
+
+{% if (enable_photo_linking == "popup") %}
+    {% include 'view/popup/popup.twig' %}
+{% endif %}

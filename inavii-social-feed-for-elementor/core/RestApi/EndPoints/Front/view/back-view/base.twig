@@ -1,0 +1,47 @@
+{% if (enable_description_general or enable_date_general or enable_likes_general or enable_comments_general) %}
+    <div class="inavii-grid__box-description">
+        {% if (enable_description_general) %}
+            <div class="inavii-grid__middle-box">
+                <p class="inavii-grid__description inavii-color-white">{{ item.caption__premium_only }}</p>
+            </div>
+        {% endif %}
+
+        {% if (enable_date_general or enable_likes_general or enable_comments_general) %}
+            <div class="inavii-grid__icons-box">
+                {% if (enable_date_general) %}
+                    <div class="inavii-grid__icons-box-left">
+                        <p class="date inavii-color-white"><i class="inavii-icon-clock"></i>
+                            {% if (item.date) %}
+                                <span class="inavii-grid__icon-text inavii-color-white">
+                            {{ item.date|date('M j') }}
+                        </span>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if (enable_likes_general or enable_comments_general) %}
+                    <div class="inavii-grid__icons-box-right {% if not (enable_date_general) %}inavii-grid__icons-small-box-right{% endif %}">
+                        {% if (enable_likes_general) %}
+                            <p class="inavii-like-count inavii-color-white">
+                                <i class="inavii-icon-like"></i>
+                                {% if (item.likeCount__premium_only > '0') %}
+                                    <span class="inavii-grid__icon-text inavii-color-white">{{ item.likeCount__premium_only }}</span>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+
+                        {% if (enable_comments_general) %}
+                            <p class="inavii-comment-count inavii-color-white">
+                                <i class="inavii-icon-comment"></i>
+                                {% if (item.commentsCount__premium_only > '0') %}
+                                    <span class="inavii-grid__icon-text inavii-color-white">{{ item.commentsCount__premium_only }}</span>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

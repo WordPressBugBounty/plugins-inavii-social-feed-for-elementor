@@ -1,0 +1,28 @@
+{% if (enable_popup_follow_button or enable_popup_icon_follow_button) %}
+    <article class="inner-swiper-slide__sidebar {{ item.promotion__premium_only.buttonModalTitle or item.promotion__premium_only.linkUrl ? 'inner-swiper-slide__sidebar-promotion' : '' }}">
+        <div class="inner-swiper-slide__sidebar-view-instagram">
+            <a class="inner-swiper-slide__sidebar-view-instagram-button {{ item.promotion__premium_only.buttonModalTitle or item.promotion__premium_only.linkUrl ? 'inner-swiper-slide__sidebar-button-promotion' : '' }}"
+               href="{{ (is_promotion and item.promotion__premium_only.linkUrl) ? item.promotion__premium_only.linkUrl : item.permalink }}"
+               target="{{ (is_promotion and item.promotion__premium_only.target) ? item.promotion__premium_only.target : '_blank' }}"
+               rel="nofollow noopener" role="button">
+                {% if (enable_popup_icon_follow_button and not item.promotion__premium_only.buttonModalTitle) %}
+                    {% if (follow_popup_button_icon.icon_class ) %}
+                        {{ follow_popup_button_icon.icon_class }}
+                    {% else %}
+                        {{ follow_popup_button_icon.inline_svg }}
+                    {% endif %}
+                {% endif %}
+
+                {% if (enable_popup_follow_button) %}
+                    <span class="inner-swiper-slide__sidebar-text">
+                        {% if is_promotion and item.promotion__premium_only.buttonModalTitle %}
+                            {{ item.promotion__premium_only.buttonModalTitle }}
+                        {% else %}
+                            {{ follow_popup_button_text }}
+                        {% endif %}
+                    </span>
+                {% endif %}
+            </a>
+        </div>
+    </article>
+{% endif %}

@@ -1,0 +1,30 @@
+{% set modulo = 2 %}
+
+{% if is_mobile %}
+    {% set elementsInRow = 3 %}
+    {% set loop_limit = 3 %}
+    {% set offset = 3 %}
+{% else %}
+    {% set elementsInRow = 5 %}
+    {% set loop_limit = posts_count_available %}
+    {% set offset = 5 %}
+{% endif %}
+
+{% for index in 1..loop_limit %}
+    {% set adjustedIndex = (index - 1) - offset %}
+    {% set translateY = '' %}
+
+    {% if index < offset %}
+        {% set translateY = (adjustedIndex % modulo == 0) ? 'translateY(-24px)' : '' %}
+    {% else %}
+        {% set row = (adjustedIndex // elementsInRow) %}
+        {% set isEvenRow = (row % modulo == 0) %}
+        {% set isEvenAdjustedIndex = (adjustedIndex % modulo == 0) %}
+
+        {% if (isEvenRow and not isEvenAdjustedIndex) or (not isEvenRow and isEvenAdjustedIndex) %}
+            {% set translateY = 'translateY(-24px)' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="inavii-image-skeleton-init" style="{{ translateY ? 'transform: ' ~ translateY ~ ';' : '' }}"></div>
+{% endfor %}

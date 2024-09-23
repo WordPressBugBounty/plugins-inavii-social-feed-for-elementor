@@ -1,0 +1,23 @@
+{% if (enable_date_lightbox or enable_likes_lightbox or enable_comments_lightbox) %}
+    <div class="inner-swiper-slide__sidebar-box-info">
+        {% if (enable_likes_lightbox) %}
+            <span class="inavii__lightbox-like-box">
+                <i class="inavii-icon-like"></i>
+                 {% if (item.likeCount__premium_only > '0') %}
+                    {{ item.likeCount__premium_only }}
+                {% endif %}
+            </span>
+        {% endif %}
+        {% if (enable_comments_lightbox) %}
+            <span class="inavii__lightbox-comments-box">
+                <i class="inavii-icon-comment"></i>
+                  {% if (item.commentsCount__premium_only > '0') %}
+                     {{ item.commentsCount__premium_only }}
+                 {% endif %}
+            </span>
+        {% endif %}
+        {% if (enable_date_lightbox) %}
+            <span class="inavii__lightbox-date-box"><i class="inavii-icon-clock"></i>{{ item.date|date('M j') }}</span>
+        {% endif %}
+    </div>
+{% endif %}

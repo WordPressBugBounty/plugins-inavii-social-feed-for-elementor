@@ -1,0 +1,481 @@
+# Copyright (C) 2023 INAVII
+# This file is distributed under the same license as the Inavii for Elementor Social Feed plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inavii for Elementor Social Feed 2.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/inavii-social-feed-for-elementor\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-06-03T10:03:48+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.0\n"
+"X-Domain: inavii-social-feed-e\n"
+
+#. Plugin Name of the plugin
+msgid "Inavii for Elementor Social Feed"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.inavii.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add Instagram to your website in less than a minute with our dedicated plugin for Elementor. Just 4 simple steps will allow you to display your Instagram profile on your site, captivating visitors with beautiful photos and layouts."
+msgstr ""
+
+#. Author of the plugin
+msgid "INAVII"
+msgstr ""
+
+#: core/Admin/SettingsPage.php:25
+#: includes/Integration/WidgetsManager.php:31
+msgid "Inavii Social Feed"
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:48
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:49
+msgid "Inavii Social Feed for Elementor"
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:50
+#: includes/Dependence/AdminNotice.php:68
+msgid "Elementor"
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:66
+#: includes/Dependence/AdminNotice.php:85
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:67
+#: includes/Dependence/AdminNotice.php:86
+msgid "Inavii Extensions"
+msgstr ""
+
+#: includes/Dependence/AdminNotice.php:87
+msgid "PHP"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:64
+msgid "Instagram Feeds"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:74
+msgid "You have not added your Instagram account yet, to do it go %1$s"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:76
+msgid "here"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:85
+msgid "Account Type"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:89
+msgid "Personal"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:90
+msgid "Business"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:99
+#: includes/Integration/Widgets/WidgetsBase.php:111
+msgid "Select Feed"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:124
+msgid "Feeds Layout"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:136
+msgid "Query"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:143
+#: includes/Integration/Widgets/WidgetsBase.php:166
+#: includes/Integration/Widgets/WidgetsBase.php:186
+#: includes/Integration/Widgets/WidgetsBase.php:206
+msgid "Number of instagram posts"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:227
+msgid "Number of instagram posts on mobile"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:240
+#: includes/Integration/Widgets/WidgetsBase.php:746
+msgid "Layout Settings"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:247
+msgid "Card Layout"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:272
+#: includes/Integration/Widgets/WidgetsBase.php:392
+#: includes/Integration/Widgets/WidgetsBase.php:424
+#: includes/Integration/Widgets/WidgetsBase.php:456
+#: includes/Integration/Widgets/WidgetsBase.php:488
+#: includes/Integration/Widgets/WidgetsBase.php:564
+#: includes/Integration/Widgets/WidgetsBase.php:596
+#: includes/Integration/Widgets/WidgetsBase.php:628
+#: includes/Integration/Widgets/WidgetsBase.php:660
+#: includes/Integration/Widgets/WidgetsBase.php:1260
+#: includes/Integration/Widgets/WidgetsBase.php:1288
+#: includes/Integration/Widgets/WidgetsBase.php:1316
+#: includes/Integration/Widgets/WidgetsBase.php:1357
+#: includes/Integration/Widgets/WidgetsBase.php:1385
+#: includes/Integration/Widgets/WidgetsBase.php:1916
+#: includes/Integration/Widgets/WidgetsBase.php:1944
+#: includes/Integration/Widgets/WidgetsBase.php:1972
+#: includes/Integration/Widgets/WidgetsBase.php:2019
+#: includes/Integration/Widgets/WidgetsBase.php:2047
+#: includes/Integration/Widgets/WidgetsBase.php:2075
+#: includes/Integration/Widgets/WidgetsBase.php:2116
+#: includes/Integration/Widgets/WidgetsBase.php:2144
+#: includes/Integration/Widgets/WidgetsBase.php:2185
+#: includes/Integration/Widgets/WidgetsBase.php:2213
+#: includes/Integration/Widgets/WidgetsBase.php:2241
+msgid "pro"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:281
+msgid "Image Size Feeds"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:295
+msgid "Photo Options"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:310
+msgid "Open in a New Window "
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:312
+#: includes/Integration/Widgets/WidgetsBase.php:347
+#: includes/Integration/Widgets/WidgetsBase.php:371
+#: includes/Integration/Widgets/WidgetsBase.php:403
+#: includes/Integration/Widgets/WidgetsBase.php:435
+#: includes/Integration/Widgets/WidgetsBase.php:467
+#: includes/Integration/Widgets/WidgetsBase.php:508
+#: includes/Integration/Widgets/WidgetsBase.php:531
+#: includes/Integration/Widgets/WidgetsBase.php:543
+#: includes/Integration/Widgets/WidgetsBase.php:575
+#: includes/Integration/Widgets/WidgetsBase.php:607
+#: includes/Integration/Widgets/WidgetsBase.php:639
+#: includes/Integration/Widgets/WidgetsBase.php:680
+#: includes/Integration/Widgets/WidgetsBase.php:703
+#: includes/Integration/Widgets/WidgetsBase.php:715
+msgid "Yes"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:313
+#: includes/Integration/Widgets/WidgetsBase.php:348
+#: includes/Integration/Widgets/WidgetsBase.php:372
+#: includes/Integration/Widgets/WidgetsBase.php:404
+#: includes/Integration/Widgets/WidgetsBase.php:436
+#: includes/Integration/Widgets/WidgetsBase.php:468
+#: includes/Integration/Widgets/WidgetsBase.php:509
+#: includes/Integration/Widgets/WidgetsBase.php:532
+#: includes/Integration/Widgets/WidgetsBase.php:544
+#: includes/Integration/Widgets/WidgetsBase.php:576
+#: includes/Integration/Widgets/WidgetsBase.php:608
+#: includes/Integration/Widgets/WidgetsBase.php:640
+#: includes/Integration/Widgets/WidgetsBase.php:681
+#: includes/Integration/Widgets/WidgetsBase.php:704
+#: includes/Integration/Widgets/WidgetsBase.php:716
+msgid "No"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:327
+msgid "Content"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:338
+#: includes/Integration/Widgets/WidgetsBase.php:923
+msgid "General"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:345
+#: includes/Integration/Widgets/WidgetsBase.php:713
+msgid "Enable Follow Instagram Button"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:357
+#: includes/Integration/Widgets/WidgetsBase.php:725
+msgid "Instagram Button Text"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:369
+#: includes/Integration/Widgets/WidgetsBase.php:541
+msgid "Enable Date"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:401
+#: includes/Integration/Widgets/WidgetsBase.php:573
+msgid "Enable Description"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:433
+#: includes/Integration/Widgets/WidgetsBase.php:605
+msgid "Enable Likes Count"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:465
+#: includes/Integration/Widgets/WidgetsBase.php:637
+msgid "Enable Comments Count"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:499
+#: includes/Integration/Widgets/WidgetsBase.php:1987
+msgid "Lightbox"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:506
+#: includes/Integration/Widgets/WidgetsBase.php:678
+msgid "Enable Avatar"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:519
+#: includes/Integration/Widgets/WidgetsBase.php:691
+msgid "You can change your avatar in <a href=\"./admin.php?page=inavii-instagram-settings#/accounts\" target=\"_blank\"> settings</a>."
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:529
+#: includes/Integration/Widgets/WidgetsBase.php:701
+msgid "Enable Username"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:671
+#: includes/Integration/Widgets/WidgetsBase.php:1400
+msgid "Header Box"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:754
+#: includes/Integration/Widgets/WidgetsBase.php:791
+msgid "Column"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:818
+#: includes/Integration/Widgets/WidgetsBase.php:853
+msgid "Items gap"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:888
+msgid "Items Height"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:931
+msgid "Object Fit"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:949
+#: includes/Integration/Widgets/WidgetsBase.php:974
+msgid "Items border radius"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1014
+msgid "Normal"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1021
+#: includes/Integration/Widgets/WidgetsBase.php:1116
+msgid "Opacity"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1074
+msgid "Transition (ms)"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1109
+msgid "Hover"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1134
+msgid "Grayscale"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1161
+msgid "Scale"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1203
+msgid "Transition Duration"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1220
+msgid "Hover Animation"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1243
+#: includes/Integration/Widgets/WidgetsBase.php:2127
+msgid "Description"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1271
+#: includes/Integration/Widgets/WidgetsBase.php:2224
+msgid "Date"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1299
+#: includes/Integration/Widgets/WidgetsBase.php:1899
+#: includes/Integration/Widgets/WidgetsBase.php:2002
+msgid "Overlay"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1340
+#: includes/Integration/Widgets/WidgetsBase.php:2168
+msgid "Likes"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1368
+#: includes/Integration/Widgets/WidgetsBase.php:2196
+msgid "Comments"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1432
+#: includes/Integration/Widgets/WidgetsBase.php:2267
+msgid "Alignment"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1436
+#: includes/Integration/Widgets/WidgetsBase.php:2271
+msgid "Left"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1440
+#: includes/Integration/Widgets/WidgetsBase.php:2275
+msgid "Center"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1444
+#: includes/Integration/Widgets/WidgetsBase.php:2279
+msgid "Right"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1448
+msgid "Space Between"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1462
+#: includes/Integration/Widgets/WidgetsBase.php:1667
+#: includes/Integration/Widgets/WidgetsBase.php:2305
+#: includes/Integration/Widgets/WidgetsBase.php:2360
+msgid "Padding"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1475
+msgid "Gap"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1507
+#: includes/Integration/Widgets/WidgetsBase.php:2099
+msgid "Avatar"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1575
+msgid "Spacing"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1618
+#: includes/Integration/Widgets/WidgetsBase.php:1715
+#: includes/Integration/Widgets/WidgetsBase.php:1770
+#: includes/Integration/Widgets/WidgetsBase.php:2408
+#: includes/Integration/Widgets/WidgetsBase.php:2463
+msgid "Color"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1635
+#: includes/Integration/Widgets/WidgetsBase.php:1927
+#: includes/Integration/Widgets/WidgetsBase.php:2030
+#: includes/Integration/Widgets/WidgetsBase.php:2328
+msgid "Follow Button"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1646
+#: includes/Integration/Widgets/WidgetsBase.php:2339
+msgid "Typography"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1655
+#: includes/Integration/Widgets/WidgetsBase.php:2293
+#: includes/Integration/Widgets/WidgetsBase.php:2348
+msgid "Margin"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1679
+#: includes/Integration/Widgets/WidgetsBase.php:2372
+msgid "Border Radius"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1698
+#: includes/Integration/Widgets/WidgetsBase.php:2391
+msgid "NORMAL"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1726
+#: includes/Integration/Widgets/WidgetsBase.php:1782
+#: includes/Integration/Widgets/WidgetsBase.php:2419
+#: includes/Integration/Widgets/WidgetsBase.php:2475
+msgid "Background Color"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1753
+#: includes/Integration/Widgets/WidgetsBase.php:2446
+msgid "HOVER"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1809
+#: includes/Integration/Widgets/WidgetsBase.php:2502
+msgid "FOLLOW ICON"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1817
+#: includes/Integration/Widgets/WidgetsBase.php:2510
+msgid "Icon"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1829
+#: includes/Integration/Widgets/WidgetsBase.php:2522
+msgid "Icon Size"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1846
+#: includes/Integration/Widgets/WidgetsBase.php:2539
+msgid "Text spacing"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1866
+#: includes/Integration/Widgets/WidgetsBase.php:2559
+msgid "Icon Color"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1884
+msgid "PopUp"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:1955
+#: includes/Integration/Widgets/WidgetsBase.php:2058
+msgid "Close Button"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:2256
+msgid "Footer Box"
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:2577
+msgid "This field is available in the <a target=\"_blank\">PRO</a> version."
+msgstr ""
+
+#: includes/Integration/Widgets/WidgetsBase.php:2583
+msgid "These fields are available in the <a target=\"_blank\">PRO</a> version."
+msgstr ""

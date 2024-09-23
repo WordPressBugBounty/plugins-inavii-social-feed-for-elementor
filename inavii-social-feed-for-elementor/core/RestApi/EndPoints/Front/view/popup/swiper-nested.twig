@@ -1,0 +1,76 @@
+<div class="nested-swiper">
+    <div class="swiper-wrapper">
+        {% for index,child in item.children %}
+
+            <div class="swiper-slide">
+                <div class="swiper-slide-box">
+                    {% if child.mediaType == 'VIDEO' %}
+                        {% if child.videoUrl %}
+                            <div class="swiper-slide-box--video-box">
+                                {% if video_playback %}
+                                    {% include 'view/assets/icon-play.twig' %}
+                                    <video class="inavii__video-popup"
+                                           src="{{ child.videoUrl }}#t=0.001"
+                                           loop playsinline
+                                           loading="lazy"
+                                           preload="metadata"></video>
+                                {% else %}
+                                    <img src="{{ child.mediaUrl["large"] }}"
+                                         class="inavii__image"
+                                            {% if is_pro %}
+                                                alt="{{ item.caption__premium_only }}"
+                                            {% else %}
+                                                alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                                            {% endif %}
+                                         data-alternate-src="{{ child.alternativeUrl }}"
+                                         loading="lazy"
+                                    />
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="inavii-button__reel-instagram-button"
+                                    {{ child.videoUrl == "" ? ' style="background-color: #ccc;"' : '' }}>
+                                <img src="{{ child.mediaUrl["large"] }}"
+                                     class="inavii__image"
+                                    {% if is_pro %}
+                                        alt="{{ item.caption__premium_only }}"
+                                    {% else %}
+                                        alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                                    {% endif %}
+                                     data-alternate-src="{{ child.alternativeUrl }}"
+                                     loading="lazy"
+                                />
+                                <a href="{{ child.permalink }}" target="_blank"
+                                   rel="nofollow noopener" role="button">
+                                    View the post on Instagram
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <img class="inavii__image"
+                             src="{{ child.mediaUrl["large"] }}"
+                            {% if is_pro %}
+                                alt="{{ item.caption__premium_only }}"
+                            {% else %}
+                                alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                            {% endif %}
+                             data-alternate-src="{{ child.url }}"
+                             loading="lazy"
+                        />
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="nested-swiper-pagination swiper-pagination"></div>
+    <div class="nested-swiper-button-prev swiper-button-prev inavii-arrow">
+        <svg viewBox="0 0 20 20" fill="#ffffff">
+            <path d="M14 5l-5 5 5 5-1 2-7-7 7-7z"/>
+        </svg>
+    </div>
+    <div class="nested-swiper-button-next swiper-button-next inavii-arrow">
+        <svg viewBox="0 0 20 20" fill="#ffffff">
+            <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"/>
+        </svg>
+    </div>
+</div>

@@ -2,17 +2,27 @@
 
 namespace Inavii\Instagram\Cron;
 
+use Inavii\Instagram\Cron\CustomOrder\UpdateCustomOrder;
+use Inavii\Instagram\MediaSourceCreators\HashtagPosts;
 use Inavii\Instagram\MediaSourceCreators\InstagramPosts;
+use Inavii\Instagram\MediaSourceCreators\TaggedPosts;
+use Inavii\Instagram\FeedsManager\Source\HashtagSource;
 use Inavii\Instagram\FeedsManager\Source\InstagramSource;
+use Inavii\Instagram\FeedsManager\Source\TaggedSource;
 use Inavii\Instagram\Media\Media;
 use Inavii\Instagram\PostTypes\Feed\FeedPostType;
 use Inavii\Instagram\PostTypes\Media\MediaPostType;
 use Inavii\Instagram\Services\Instagram\InstagramOAuthException;
 use Inavii\Instagram\Services\Instagram\MessageNotProvidedException;
+use Inavii\Instagram\Utils\VersionChecker;
 class UpdateMedia {
     private $feedPostType;
 
     private $mediaPostType;
+
+    private $taggedPosts;
+
+    private $hashtagPosts;
 
     private $instagramPosts;
 

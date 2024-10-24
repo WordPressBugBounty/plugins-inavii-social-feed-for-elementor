@@ -10,6 +10,9 @@ use Inavii\Instagram\PostTypes\Account\AccountPostType;
 use Inavii\Instagram\Services\Instagram\InstagramOAuthException;
 use Inavii\Instagram\Services\Instagram\MediaRequest;
 use Inavii\Instagram\Services\Instagram\MessageNotProvidedException;
+use Inavii\Instagram\SystemStatus\EmailNotification;
+use Inavii\Instagram\SystemStatus\TokenIssues;
+use Inavii\Instagram\Utils\VersionChecker;
 class Schedule {
     private $accountPostType;
 

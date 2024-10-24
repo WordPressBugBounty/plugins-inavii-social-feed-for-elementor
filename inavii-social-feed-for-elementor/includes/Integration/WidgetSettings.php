@@ -100,6 +100,27 @@ class WidgetSettings {
         return $this->setting( 'header_follow_icon_button' );
     }
 
+    public function getSliderHeight( $device = 'desktop' ) {
+        switch ( $device ) {
+            case 'tablet':
+                $height = $this->setting( 'slider_height_tablet' )['size'] ?? null;
+                break;
+            case 'mobile':
+                $height = $this->setting( 'slider_height_mobile' )['size'] ?? null;
+                break;
+            default:
+                $height = $this->setting( 'slider_height' )['size'] ?? 220;
+                break;
+        }
+        if ( $device === 'tablet' && !$height ) {
+            $height = $this->getSliderHeight( 'desktop' );
+        }
+        if ( $device === 'mobile' && !$height ) {
+            $height = $this->getSliderHeight( 'tablet' );
+        }
+        return $height;
+    }
+
     public function userNameHeaderChoice() : string {
         return $this->setting( 'user_name_header_choice' ) ?? 'username';
     }

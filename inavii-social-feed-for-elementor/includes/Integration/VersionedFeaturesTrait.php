@@ -21,7 +21,7 @@ trait VersionedFeaturesTrait
         return sprintf(
             '<a href="%s" target="_blank">%s</a>',
             esc_url(Utils::pricingPageLink()),
-            __('Upgrade to Essentials', 'inavii-social-feed-e')
+            __('Start 3-day trial', 'inavii-social-feed-e')
         );
     }
 

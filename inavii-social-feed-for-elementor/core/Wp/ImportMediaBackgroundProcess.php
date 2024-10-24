@@ -29,9 +29,7 @@ class ImportMediaBackgroundProcess
             ];
         }, $media ?? []);
 
-        $previousMedia = get_option('inavii_instagram_media_to_download', []);
-
-        update_option('inavii_instagram_media_to_download', array_merge($previousMedia, $data));
+        $success = update_option('inavii_instagram_media_to_download', $data);
     }
 
     public function fetchInstagramMedia()

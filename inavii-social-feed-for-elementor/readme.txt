@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.6
-Stable tag: 2.6.9
+Stable tag: 2.7.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,6 +16,13 @@ Create the ultimate Instagram experience. Add Instagram feed to your Elementor s
 Say goodbye to the hassle of manually updating content on your website. With our **[Inavii Social Feed plugin](https://www.inavii.com/)**, specifically designed for Elementor-powered sites, your site will always be up-to-date with the latest posts from your Instagram profile. Simply add new content to Instagram, and your gallery on the website will automatically update.
 
 <iframe width="750" height="422" src="https://www.youtube.com/embed/-K0xVGD9EX4?si=7eT7DS3_JiyoBqmD" title="How to add Your Instagram Profile to a Website Using Elementor in a Minute!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Recommended by the Experts
+
+Our plugin **Inavii Social Feed for Elementor** has been highlighted and recommended by experts from various renowned publications. Here are some media highlights that appreciated our solution:
+
+- **Elementor**: **[12 Best Instagram Plugins for WordPress](https://elementor.com/blog/best-instagram-plugins-wordpress/)**
+- **Crocoblock**: **[13 Best WordPress Instagram Plugins for Block Editor, Elementor and Bricks](https://crocoblock.com/blog/best-wordpress-instagram-plugins/)**
 
 ### Seamless **Instagram** Integration
 
@@ -152,6 +159,7 @@ Yes, with the **Drag and Drop** feature available in **Inavii Social Feed**, you
 
 Yes, with **Inavii Social Feed**, you have full control over the customization of your Instagram feed using a dedicated widget for Elementor. This powerful tool allows you to adjust every aspect of your feed, from layout and number of columns to specific post positioning using the **Drag and Drop** feature. Create a personalized and visually stunning Instagram feed that seamlessly integrates with your website's aesthetics, ensuring a unique experience for your visitors.
 
+
 == Screenshots ==
 
 1.
@@ -166,6 +174,12 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.0 (2024-10-24) =
+- Added column selection functionality for tablet and mobile device views in "Slider" layout. (PRO)
+- Added dynamic fetching of breakpoints for the Slider view. (PRO)
+- Improved height control functionality for mobile and tablet resolutions in the Slider layout. (PRO)
+- Added the ability to render the widget using either AJAX or PHP, providing greater flexibility in performance optimization.
 
 = 2.6.9 (2024-07-25) =
 - Fixed: Issues with images during CRON tasks.

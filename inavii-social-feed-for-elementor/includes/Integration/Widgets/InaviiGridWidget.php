@@ -8,6 +8,7 @@ use Inavii\Instagram\PostTypes\Account\AccountPostType;
 use Inavii\Instagram\PostTypes\Feed\FeedPostType;
 use Inavii\Instagram\Utils\TimeChecker;
 use Inavii\Instagram\Utils\VersionChecker;
+use Inavii\Instagram\Wp\AppGlobalSettings;
 use Timber\Timber;
 class InaviiGridWidget extends WidgetsBase {
     public function get_name() : string {
@@ -15,7 +16,7 @@ class InaviiGridWidget extends WidgetsBase {
     }
 
     public function get_title() : string {
-        return esc_html__( 'Inavii Social Feed', INAVII_SOCIAL_FEED_E_TEXT_DOMAIN );
+        return esc_html__( 'Inavii Social Feed', 'inavii-social-feed-e' );
     }
 
     public function get_icon() : string {
@@ -26,42 +27,32 @@ class InaviiGridWidget extends WidgetsBase {
         return is_user_logged_in() && current_user_can( 'manage_options' );
     }
 
-    /**
-     * Render text editor widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.r
-     *
-     * @since  1.0.0
-     * @access protected
-     */
-    protected function render() : void {
-        $this->settings = $this->get_settings_for_display();
-        $widgetSettings = new WidgetSettings($this->settings);
-        $feed = new FeedPostType();
-        $feedId = $widgetSettings->feedId();
-        if ( $feedId === 0 ) {
-            Timber::render( 'view/no-posts.twig', [
-                'message' => '<span>Please select </span> a feed',
-            ] );
-            return;
-        }
-        if ( $widgetSettings->isAvailableLayout() === false ) {
-            Timber::render( 'view/no-posts.twig', [
-                'message' => '<span>This layout is no longer available, please choose another one.</span>',
-            ] );
-            return;
-        }
-        $countAvailablePosts = $feed->countAvailablePosts( $feedId, $widgetSettings->postsCount() );
-        $feedSettings = $feed->getSettings( $feedId );
-        $account = ( new AccountPostType() )->getAccountRelatedWithFeed( $feedId );
-        if ( $account->wpAccountID() === 0 ) {
-            $account = ( new GetAccountsBySource($feedSettings) )->get();
-        }
-        $widgetData = [
+    private function getRenderOption() : string {
+        $settings = new AppGlobalSettings();
+        return $settings->getRenderOption();
+    }
+
+    private function twigPath() : string {
+        return INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX . 'view/index-dynamic.twig';
+    }
+
+    private function dynamicTwigExists() : bool {
+        $path = $this->twigPath();
+        return file_exists( $path ) && is_readable( $path );
+    }
+
+    private function getWidgetData(
+        $feed,
+        $feedId,
+        WidgetSettings $widgetSettings,
+        array $feedSettings,
+        $account
+    ) : array {
+        return [
             'feed_offset'                        => $widgetSettings->feedOffset(),
             'feed_id'                            => $feedId,
             'posts_count'                        => $widgetSettings->postsCount(),
-            'posts_count_available'              => $countAvailablePosts,
+            'posts_count_available'              => $feed->countAvailablePosts( $feedId, $widgetSettings->postsCount() ),
             'items'                              => [],
             'items_desktop'                      => $widgetSettings->postsCount(),
             'items_mobile'                       => $widgetSettings->postsCountMobile(),
@@ -90,17 +81,73 @@ class InaviiGridWidget extends WidgetsBase {
             'is_promotion'                       => $feedSettings['promotion'] ?? false,
             'is_pro'                             => VersionChecker::version()->can_use_premium_code() && VersionChecker::version()->is_premium(),
             'video_playback'                     => $widgetSettings->videoPlayback(),
+            'render_type'                        => ( $this->getRenderOption() === 'PHP' && $this->dynamicTwigExists() ? 'PHP' : 'AJAX' ),
         ];
+    }
+
+    private function renderDynamicContent(
+        $feed,
+        $feedId,
+        WidgetSettings $widgetSettings,
+        array $widgetData
+    ) : string {
+        if ( $this->getRenderOption() !== 'PHP' || !$this->dynamicTwigExists() ) {
+            return '';
+        }
+        $posts = $feed->get( $feedId, $widgetSettings->postsCount() );
+        Timber::$locations = INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX;
+        return Timber::compile( $this->twigPath(), array_merge( $widgetData, [
+            'items' => $posts,
+        ] ) );
+    }
+
+    /**
+     * Render the widget output on the frontend.
+     *
+     * @since  1.0.0
+     * @access protected
+     */
+    protected function render() : void {
+        $this->settings = $this->get_settings_for_display();
+        $widgetSettings = new WidgetSettings($this->settings);
+        $feed = new FeedPostType();
+        $feedId = $widgetSettings->feedId();
+        if ( $feedId === 0 ) {
+            Timber::render( 'view/no-posts.twig', [
+                'message' => '<span>Please select </span> a feed',
+            ] );
+            return;
+        }
+        if ( !$widgetSettings->isAvailableLayout() ) {
+            Timber::render( 'view/no-posts.twig', [
+                'message' => '<span>This layout is no longer available, please choose another one.</span>',
+            ] );
+            return;
+        }
+        $feedSettings = $feed->getSettings( $feedId );
+        $account = ( new AccountPostType() )->getAccountRelatedWithFeed( $feedId );
+        if ( $account->wpAccountID() === 0 ) {
+            $account = ( new GetAccountsBySource($feedSettings) )->get();
+        }
+        $widgetData = $this->getWidgetData(
+            $feed,
+            $feedId,
+            $widgetSettings,
+            $feedSettings,
+            $account
+        );
+        if ( VersionChecker::version()->is__premium_only() && VersionChecker::version()->can_use_premium_code() ) {
+            $swiperOptions = $this->getSwiperOptions__premium_only( $widgetSettings );
+            $widgetData = $this->mergePremiumData__premium_only(
+                $widgetData,
+                $widgetSettings,
+                $swiperOptions,
+                $account,
+                $feedSettings
+            );
+        }
         if ( $this->isAdmin() ) {
-            try {
-                $lastFeedUpdate = (int) TimeChecker::calculateTimeDifference( (string) $account->lastUpdate() )->days;
-                if ( $account->issues()['reconnectRequired'] ) {
-                    Timber::render( 'view/reconnect.twig', [
-                        'lastUpdate' => $lastFeedUpdate,
-                    ] );
-                }
-            } catch ( \Exception $e ) {
-            }
+            $this->handleAdminRendering( $account );
         }
         Timber::render( 'view/index.twig', array_merge( [
             'widgetSettings' => $widgetData,
@@ -113,7 +160,26 @@ class InaviiGridWidget extends WidgetsBase {
             'header_follow_button_text'   => $widgetSettings->headerFollowButtonText(),
             'enable_avatar_header_box'    => $widgetSettings->enableAvatarHeaderBox(),
             'username_header_box'         => $widgetSettings->enableUserNameHeaderBox(),
+            'dynamic_content'             => $this->renderDynamicContent(
+                $feed,
+                $feedId,
+                $widgetSettings,
+                $widgetData
+            ),
         ] ) ) );
+    }
+
+    private function handleAdminRendering( $account ) : void {
+        try {
+            $lastFeedUpdate = (int) TimeChecker::calculateTimeDifference( (string) $account->lastUpdate() )->days;
+            if ( $account->issues()['reconnectRequired'] ) {
+                Timber::render( 'view/reconnect.twig', [
+                    'lastUpdate' => $lastFeedUpdate,
+                ] );
+            }
+        } catch ( \Exception $e ) {
+            // Handle exception if needed
+        }
     }
 
 }

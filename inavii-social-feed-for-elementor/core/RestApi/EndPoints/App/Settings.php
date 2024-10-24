@@ -35,6 +35,7 @@ class Settings {
                 'numberOfPostsToImport' => $this->appGlobalSettings->getNumberOfPostsImported(),
                 'emailNotifications'    => $this->appGlobalSettings->getEmailNotifications(),
                 'email'                 => $this->appGlobalSettings->getEmail(),
+                'renderOption'          => $this->appGlobalSettings->getRenderOption(),
             ],
             'pricingUrl'            => Utils::pricingPageLink(),
         ] );
@@ -58,10 +59,12 @@ class Settings {
         ] );
         $emailNotifications = filter_var( $data['emailNotifications'], FILTER_VALIDATE_BOOLEAN );
         $email = sanitize_email( $data['email'] ) ?? '';
+        $renderOption = filter_var( $data['renderOption'], FILTER_SANITIZE_SPECIAL_CHARS );
         $this->updateScheduledMediaUpdateTask( $cronInterval );
         $this->appGlobalSettings->saveCronInterval( $cronInterval );
         $this->appGlobalSettings->saveNumberOfPostsImported( $numberOfPostsToImport );
         $this->appGlobalSettings->saveEmailNotifications( $emailNotifications );
+        $this->appGlobalSettings->saveRenderOption( $renderOption );
         return $this->api->response( [
             'message' => 'Settings updated successfully',
         ] );

@@ -47,6 +47,16 @@ class AppGlobalSettings
         return $email;
     }
 
+    public function getRenderOption(): string
+    {
+        return get_option('inavii_social_feed_render_type', 'AJAX');
+    }
+
+    public function saveRenderOption($renderOption): void
+    {
+        update_option('inavii_social_feed_render_type', $renderOption);
+    }
+
     public function saveEmail(string $email = ''): void
     {
         update_option('inavii_social_feed_email_to_notifications', $email);

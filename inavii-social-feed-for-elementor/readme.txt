@@ -4,8 +4,8 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.6
-Stable tag: 2.7.0
-Requires PHP: 7.2
+Stable tag: 2.7.1
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -174,6 +174,11 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.1 (2024-10-31) =
+- Update: Updated Twig version.
+- Add: Added a new option to hide all posts by default (PRO version).
+- Change: Updated minimum PHP version requirement to 7.4.
 
 = 2.7.0 (2024-10-24) =
 - Added column selection functionality for tablet and mobile device views in "Slider" layout. (PRO)

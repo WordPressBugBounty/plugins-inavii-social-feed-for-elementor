@@ -66,7 +66,8 @@ class MediaPostType extends PostType
             ->withMetaQueryRelation(MediaPostType::CAPTION, $settings['captionFilter']['include'] ?? [], 'LIKE')
             ->withMetaQueryRelation(MediaPostType::CAPTION, $settings['captionFilter']['exclude'] ?? [], 'NOT LIKE', 'AND')
             ->withSpecificPosts(FeedAdvancedFilters::customOrderPostIds($settings))
-            ->withExcludePosts(FeedAdvancedFilters::moderatePosts($settings))
+            ->withSpecificPosts(FeedAdvancedFilters::moderateWhiteList($settings))
+            ->withExcludePosts(FeedAdvancedFilters::moderateBlackList($settings))
             ->countPosts();
     }
 
@@ -110,7 +111,8 @@ class MediaPostType extends PostType
             ->withMetaQueryRelation(MediaPostType::CAPTION, $settings['captionFilter']['exclude'] ?? [], 'NOT LIKE', 'AND')
             ->orderByMetaValue($order->key, $order->valueType, $order->order, $order->isRandom)
             ->withSpecificPosts(FeedAdvancedFilters::customOrderPostIds($settings))
-            ->withExcludePosts(FeedAdvancedFilters::moderatePosts($settings))
+            ->withSpecificPosts(FeedAdvancedFilters::moderateWhiteList($settings))
+            ->withExcludePosts(FeedAdvancedFilters::moderateBlackList($settings))
             ->numberOfPosts($postsCount)
             ->withOffset($offset)
             ->posts();

@@ -37,12 +37,12 @@
 
     <div class="inner-swiper-slide__sidebar-description">
         {% if is_pro %}
-            {% include 'view/lightbox/sidebar-description-box.twig' %}
+            {% include '@inavii_front_path/lightbox/sidebar-description-box.twig' %}
         {% endif %}
     </div>
 
     {% if is_pro %}
-        {% include 'view/lightbox/sidebar-info-box.twig' %}
+        {% include '@inavii_front_path/lightbox/sidebar-info-box.twig' %}
     {% endif %}
 
     {% if (enable_lightbox_follow_button or enable_lightbox_icon_follow_button) %}

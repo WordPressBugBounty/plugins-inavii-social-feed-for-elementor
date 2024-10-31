@@ -11,15 +11,15 @@
          data-index="{{ index }}" role="button" tabindex="0"
             {{ layout_type == 'highlight-focus' ? ' data-focus="' ~ itemFocus ~ '"' : '' }}
             {{ enable_photo_linking == "lightbox" or enable_photo_linking == "popup" ? ' data-micromodal-trigger="modal-' ~ widget_id ~ '"' : '' }}>
-        {% include 'view/front-view/base.twig' with {'index': loop.index} %}
+        {% include '@inavii_front_path/front-view/base.twig' with {'index': loop.index} %}
     </div>
 {% endfor %}
 
 {% if (enable_photo_linking == "lightbox") %}
-    {% include 'view/lightbox/lightbox.twig' %}
+    {% include '@inavii_front_path/lightbox/lightbox.twig' %}
 {% endif %}
 
 
 {% if (enable_photo_linking == "popup") %}
-    {% include 'view/popup/popup.twig' %}
+    {% include '@inavii_front_path/popup/popup.twig' %}
 {% endif %}

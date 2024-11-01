@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.6
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,9 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.2 (2024-11-01) =
+- Rollback previous version due to issues on some servers
 
 = 2.7.1 (2024-10-31) =
 - Update: Updated Twig version.
@@ -442,4 +445,5 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 = 1.0.0 (2022-12-10) =
 
 - Initial version.
-== Upgrade Notice ==
+  
+  == Upgrade Notice ==

@@ -2,11 +2,11 @@
     <a href="{{ item.permalink }}" target="{{ target }}">
         <div class="inavii-grid__item-box">
             {% if (item.mediaType == 'VIDEO') %}
-                {% include '@inavii_front_path/assets/icon-video.twig' %}
+                {% include 'view/assets/icon-video.twig' %}
             {% endif %}
 
             {% if (item.mediaType == 'CAROUSEL_ALBUM') %}
-                {% include '@inavii_front_path/assets/icon-gallery.twig' %}
+                {% include 'view/assets/icon-gallery.twig' %}
             {% endif %}
 
             {% if (layout_type == "cards") %}
@@ -34,18 +34,18 @@
             {% endif %}
 
             {% if is_pro %}
-                {% include '@inavii_front_path/back-view/base.twig' %}
+                {% include 'view/back-view/base.twig' %}
             {% endif %}
         </div>
     </a>
 {% else %}
     <div class="inavii-grid__item-box {%if (enable_photo_linking == "none") %}inavii-grid__item-box--pointer-none{% endif %}">
         {% if (item.mediaType == 'VIDEO') %}
-            {% include '@inavii_front_path/assets/icon-video.twig' %}
+            {% include 'view/assets/icon-video.twig' %}
         {% endif %}
 
         {% if (item.mediaType == 'CAROUSEL_ALBUM') %}
-            {% include '@inavii_front_path/assets/icon-gallery.twig' %}
+            {% include 'view/assets/icon-gallery.twig' %}
         {% endif %}
 
         {% if (layout_type == "cards") %}
@@ -75,7 +75,7 @@
         {% endif %}
 
         {% if is_pro %}
-            {% include '@inavii_front_path/back-view/base.twig' %}
+            {% include 'view/back-view/base.twig' %}
         {% endif %}
     </div>
 {% endif %}

@@ -1,5 +1,5 @@
 {% if (enable_avatar_header_box or username_header_box or enable_header_follow_button or enable_bio_header_box) %}
-    {% include '@inavii_base_path/header-box/header-box.twig' %}
+    {% include 'view/header-box/header-box.twig' %}
 {% endif %}
 
 {% if is_pro and layout_type == "slider" %}
@@ -8,7 +8,7 @@
 
         {% if is_pro %}
             {% if dynamic_content == "" %}
-                {% include '@inavii_base_path/skeleton/skeleton-slider.twig' %}
+                {% include 'view/skeleton/skeleton-slider.twig' %}
             {% endif %}
 
             {% if dynamic_content is defined and dynamic_content is not empty %}
@@ -22,54 +22,54 @@
     <div class="inavii-ajax inavii-skeleton-container {{ is_mobile ? 'inavii-is-mobile' : '' }} inavii-grid{{ layout_type != '' ? ' inavii-grid__type-' ~ layout_type }}"
          data-items-mobile="{{ items_mobile }}" data-settings="{{ widgetSettings|json_encode|e('html_attr') }}"
 
-            {% if is_pro %} {% include '@inavii_base_path/helpers/masonry-vertical-options.twig' %} {% endif %}
-            {% if is_pro %} {% include '@inavii_base_path/helpers/cards-options.twig' %} {% endif %}>
+            {% if is_pro %} {% include 'view/helpers/masonry-vertical-options.twig' %} {% endif %}
+            {% if is_pro %} {% include 'view/helpers/cards-options.twig' %} {% endif %}>
 
 
         {% if dynamic_content == "" %}
             {% if (layout_type == 'grid' or layout_type == 'gallery') %}
-                {% include '@inavii_base_path/skeleton/skeleton-grid.twig' %}
+                {% include 'view/skeleton/skeleton-grid.twig' %}
             {% endif %}
 
             {% if (layout_type == 'row') %}
-                {% include '@inavii_base_path/skeleton/skeleton-row.twig' %}
+                {% include 'view/skeleton/skeleton-row.twig' %}
             {% endif %}
 
             {% if (layout_type == 'wave') %}
-                {% include '@inavii_base_path/skeleton/skeleton-wave.twig' %}
+                {% include 'view/skeleton/skeleton-wave.twig' %}
             {% endif %}
 
             {% if is_pro %}
                 {% if (layout_type == 'cards' or layout_type == 'content-grid') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-grid.twig' %}
+                    {% include 'view/skeleton/skeleton-grid.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'shape-matrix' or layout_type == 'creative-grid') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-matrix.twig' %}
+                    {% include 'view/skeleton/skeleton-matrix.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'wave-grid') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-wave-grid.twig' %}
+                    {% include 'view/skeleton/skeleton-wave-grid.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'highlight') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-highlight.twig' %}
+                    {% include 'view/skeleton/skeleton-highlight.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'highlight-super') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-highlight-super.twig' %}
+                    {% include 'view/skeleton/skeleton-highlight-super.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'highlight-focus') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-highlight-focus.twig' %}
+                    {% include 'view/skeleton/skeleton-highlight-focus.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'masonry-horizontal') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-masonry-horizontal.twig' %}
+                    {% include 'view/skeleton/skeleton-masonry-horizontal.twig' %}
                 {% endif %}
 
                 {% if (layout_type == 'masonry-vertical') %}
-                    {% include '@inavii_base_path/skeleton/skeleton-masonry-vertical.twig' %}
+                    {% include 'view/skeleton/skeleton-masonry-vertical.twig' %}
                 {% endif %}
             {% endif %}
         {% endif %}
@@ -82,5 +82,5 @@
 {% endif %}
 
 {% if (enable_follow_button) %}
-    {% include '@inavii_base_path/buttons.twig' %}
+    {% include 'view/buttons.twig' %}
 {% endif %}

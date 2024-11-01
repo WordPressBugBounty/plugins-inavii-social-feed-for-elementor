@@ -20,12 +20,6 @@ add_action('init', static function () {
     PostType::register(new AccountPostType());
     PostType::register(new FeedPostType());
     PostType::register(new MediaPostType());
-
-    add_filter('timber/locations', function ($paths) {
-        $paths['inavii_base_path'] = [INAVII_INSTAGRAM_DIR_TWIG_VIEWS];
-        $paths['inavii_front_path'] = [INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX];
-        return $paths;
-    });
 });
 
 add_action('rest_api_init', static function () {

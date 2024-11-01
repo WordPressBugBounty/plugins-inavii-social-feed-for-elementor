@@ -8,7 +8,7 @@
                             {% if item.videoUrl %}
                                 <div class="swiper-slide-box--video-box">
                                     {% if video_playback %}
-                                        {% include '@inavii_front_path/assets/icon-play.twig' %}
+                                        {% include 'view/assets/icon-play.twig' %}
                                         <video class="inavii__video-popup"
                                                src="{{ item.videoUrl }}#t=0.001"
                                                loop playsinline
@@ -59,12 +59,12 @@
                             />
                         {% endif %}
                     </div>
-                    {% include '@inavii_front_path/popup/sidebar.twig' %}
+                    {% include 'view/popup/sidebar.twig' %}
                 </div>
             {% else %}
                 <div class="inner-swiper-slide swiper-slide">
-                    {% include '@inavii_front_path/popup/swiper-nested.twig' %}
-                    {% include '@inavii_front_path/popup/sidebar.twig' %}
+                    {% include 'view/popup/swiper-nested.twig' %}
+                    {% include 'view/popup/sidebar.twig' %}
                 </div>
             {% endif %}
         {% endfor %}

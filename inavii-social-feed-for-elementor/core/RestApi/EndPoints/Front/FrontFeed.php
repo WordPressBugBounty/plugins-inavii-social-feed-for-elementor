@@ -52,17 +52,13 @@ class FrontFeed
 
     private function noPostsResponse(): WP_REST_Response
     {
-        $html = Timber::compile(INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX .'no-posts.twig', ['message' => '<span>No posts</span> to display']);
+        $html = Timber::compile('view/no-posts.twig', ['message' => '<span>No posts</span> to display']);
         return $this->apiResponse(true, '', $html);
     }
 
     private function postsResponse(array $widgetData, array $posts): WP_REST_Response
     {
-        try {
-            $html = Timber::compile(INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX . 'index-dynamic.twig', array_merge($widgetData, ['items' => $posts]));
-        }catch (\Exception $e){
-            return $this->apiResponse(false, $e->getMessage());
-        }
+        $html = Timber::compile('view/index-dynamic.twig', array_merge($widgetData, ['items' => $posts]));
         return $this->apiResponse(true, '', $html);
     }
 

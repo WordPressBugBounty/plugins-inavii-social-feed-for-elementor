@@ -33,7 +33,7 @@ class InaviiGridWidget extends WidgetsBase {
     }
 
     private function twigPath() : string {
-        return INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX . 'index-dynamic.twig';
+        return INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX . 'view/index-dynamic.twig';
     }
 
     private function dynamicTwigExists() : bool {
@@ -95,6 +95,7 @@ class InaviiGridWidget extends WidgetsBase {
             return '';
         }
         $posts = $feed->get( $feedId, $widgetSettings->postsCount() );
+        Timber::$locations = INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX;
         return Timber::compile( $this->twigPath(), array_merge( $widgetData, [
             'items' => $posts,
         ] ) );
@@ -148,30 +149,24 @@ class InaviiGridWidget extends WidgetsBase {
         if ( $this->isAdmin() ) {
             $this->handleAdminRendering( $account );
         }
-        try {
-            Timber::render( 'view/index.twig', array_merge( [
-                'widgetSettings' => $widgetData,
-            ], array_merge( $widgetData, [
-                'enable_follow_button'        => $widgetSettings->enableFollowButton(),
-                'follow_button_icon'          => $this->icon( $widgetSettings->followButtonIcon() ),
-                'follow_button_text'          => $widgetSettings->followButtonText(),
-                'enable_header_follow_button' => $widgetSettings->enableHeaderFollowButton(),
-                'header_follow_button_icon'   => $this->icon( $widgetSettings->headerFollowButtonIcon() ),
-                'header_follow_button_text'   => $widgetSettings->headerFollowButtonText(),
-                'enable_avatar_header_box'    => $widgetSettings->enableAvatarHeaderBox(),
-                'username_header_box'         => $widgetSettings->enableUserNameHeaderBox(),
-                'dynamic_content'             => $this->renderDynamicContent(
-                    $feed,
-                    $feedId,
-                    $widgetSettings,
-                    $widgetData
-                ),
-            ] ) ) );
-        } catch ( \Exception $e ) {
-            Timber::render( 'view/no-posts.twig', [
-                'message' => $e->getMessage(),
-            ] );
-        }
+        Timber::render( 'view/index.twig', array_merge( [
+            'widgetSettings' => $widgetData,
+        ], array_merge( $widgetData, [
+            'enable_follow_button'        => $widgetSettings->enableFollowButton(),
+            'follow_button_icon'          => $this->icon( $widgetSettings->followButtonIcon() ),
+            'follow_button_text'          => $widgetSettings->followButtonText(),
+            'enable_header_follow_button' => $widgetSettings->enableHeaderFollowButton(),
+            'header_follow_button_icon'   => $this->icon( $widgetSettings->headerFollowButtonIcon() ),
+            'header_follow_button_text'   => $widgetSettings->headerFollowButtonText(),
+            'enable_avatar_header_box'    => $widgetSettings->enableAvatarHeaderBox(),
+            'username_header_box'         => $widgetSettings->enableUserNameHeaderBox(),
+            'dynamic_content'             => $this->renderDynamicContent(
+                $feed,
+                $feedId,
+                $widgetSettings,
+                $widgetData
+            ),
+        ] ) ) );
     }
 
     private function handleAdminRendering( $account ) : void {

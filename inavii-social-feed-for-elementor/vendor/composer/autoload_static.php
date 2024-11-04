@@ -218,6 +218,7 @@ class ComposerStaticInit3dd97fb8e39e652a02dc98db4df717d1
         'Inavii\\Instagram\\Includes\\Dependence\\AdminNotice' => __DIR__ . '/../..' . '/includes/Dependence/AdminNotice.php',
         'Inavii\\Instagram\\Includes\\Dependence\\RegisterAssets' => __DIR__ . '/../..' . '/includes/Dependence/RegisterAssets.php',
         'Inavii\\Instagram\\Includes\\Integration\\VersionedFeaturesTrait' => __DIR__ . '/../..' . '/includes/Integration/VersionedFeaturesTrait.php',
+        'Inavii\\Instagram\\Includes\\Integration\\Views\\Views' => __DIR__ . '/../..' . '/includes/Integration/Views/Views.php',
         'Inavii\\Instagram\\Includes\\Integration\\WidgetSettings' => __DIR__ . '/../..' . '/includes/Integration/WidgetSettings.php',
         'Inavii\\Instagram\\Includes\\Integration\\WidgetsLists' => __DIR__ . '/../..' . '/includes/Integration/WidgetsLists.php',
         'Inavii\\Instagram\\Includes\\Integration\\WidgetsManager' => __DIR__ . '/../..' . '/includes/Integration/WidgetsManager.php',

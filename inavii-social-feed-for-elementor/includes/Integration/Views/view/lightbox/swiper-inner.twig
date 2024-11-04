@@ -1,0 +1,81 @@
+<div class="inner-swiper-container">
+    <div class="swiper-wrapper">
+        {% for index,item in items %}
+            {% if item.children is empty %}
+                <div class="inner-swiper-slide swiper-slide">
+                    <div class="swiper-slide-box">
+                        {% if item.mediaType == 'VIDEO' %}
+                            {% if item.videoUrl %}
+                                <div class="swiper-slide-box--video-box">
+                                    {% if video_playback %}
+                                        {% include 'view/assets/icon-play.twig' %}
+                                        <video class="inavii__video-popup"
+                                               src="{{ item.videoUrl }}#t=0.001"
+                                               loop playsinline
+                                               preload="metadata"></video>
+                                    {% else %}
+                                        <img src="{{ item.mediaUrl["large"] }}"
+                                             class="inavii__image"
+                                                {% if is_pro %}
+                                                    alt="{{ item.caption__premium_only }}"
+                                                {% else %}
+                                                    alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                                                {% endif %}
+                                             data-alternate-src="{{ item.alternativeUrl }}"
+                                             loading="lazy"
+                                        />
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <div class="inavii-button__reel-instagram-button"
+                                        {{ item.videoUrl == "" ? ' style="background-color: #ccc;"' : '' }}>
+                                    <img src="{{ item.mediaUrl["large"] }}"
+                                         class="inavii__image"
+                                        {% if is_pro %}
+                                            alt="{{ item.caption__premium_only }}"
+                                        {% else %}
+                                            alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                                        {% endif %}
+                                         data-alternate-src="{{ item.alternativeUrl }}"
+                                         loading="lazy"
+                                    />
+                                    <a href="{{ item.permalink }}" target="_blank"
+                                       rel="nofollow noopener" role="button">
+                                        View the post on Instagram
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <img src="{{ item.mediaUrl["large"] }}"
+                                 class="inavii__image"
+                                {% if is_pro %}
+                                    alt="{{ item.caption__premium_only }}"
+                                {% else %}
+                                    alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                                {% endif %}
+                                 data-alternate-src="{{ item.alternativeUrl }}"
+                                 loading="lazy"
+                            />
+                        {% endif %}
+                    </div>
+                    {% include 'view/lightbox/sidebar.twig' %}
+                </div>
+            {% else %}
+                <div class="inner-swiper-slide swiper-slide">
+                    {% include 'view/lightbox/swiper-nested.twig' %}
+                    {% include 'view/lightbox/sidebar.twig' %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="swiper-button-prev inner-swiper-button-prev">
+    <svg viewBox="0 0 20 20" fill="#ffffff">
+        <path d="M14 5l-5 5 5 5-1 2-7-7 7-7z"/>
+    </svg>
+</div>
+<div class="swiper-button-next inner-swiper-button-next">
+    <svg viewBox="0 0 20 20" fill="#ffffff">
+        <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"/>
+    </svg>
+</div>

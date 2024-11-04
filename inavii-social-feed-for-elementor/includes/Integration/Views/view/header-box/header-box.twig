@@ -1,0 +1,8 @@
+<div class="inavii__header-container {{ feed_type == 'hashtag_posts' ? 'inavii__header-hashtag-active' : '' }} {{ not enable_bio_header_box ? 'inavii__bio-active' : '' }}">
+    {% if feed_type != 'hashtag_posts' and (username_header_box or enable_avatar_header_box or enable_bio_header_box) %}
+        {% include 'view/header-box/header-avatar.twig' %}
+    {% endif %}
+    {% if (enable_header_follow_button) %}
+        {% include 'view/header-box/header-follow-instagram.twig' %}
+    {% endif %}
+</div>

@@ -133,6 +133,7 @@ return array(
     'Inavii\\Instagram\\Includes\\Dependence\\AdminNotice' => $baseDir . '/includes/Dependence/AdminNotice.php',
     'Inavii\\Instagram\\Includes\\Dependence\\RegisterAssets' => $baseDir . '/includes/Dependence/RegisterAssets.php',
     'Inavii\\Instagram\\Includes\\Integration\\VersionedFeaturesTrait' => $baseDir . '/includes/Integration/VersionedFeaturesTrait.php',
+    'Inavii\\Instagram\\Includes\\Integration\\Views\\Views' => $baseDir . '/includes/Integration/Views/Views.php',
     'Inavii\\Instagram\\Includes\\Integration\\WidgetSettings' => $baseDir . '/includes/Integration/WidgetSettings.php',
     'Inavii\\Instagram\\Includes\\Integration\\WidgetsLists' => $baseDir . '/includes/Integration/WidgetsLists.php',
     'Inavii\\Instagram\\Includes\\Integration\\WidgetsManager' => $baseDir . '/includes/Integration/WidgetsManager.php',

@@ -52,7 +52,7 @@ class SectionFeedSettingsStyle implements ControlsInterface
                     '{{WRAPPER}}.elementor-widget-inavii-grid .inavii-grid .inavii-grid__item,
 					{{WRAPPER}}.elementor-widget-inavii-grid .inavii-grid .inavii-grid__item .inavii-grid__image-box,
 					{{WRAPPER}}.elementor-widget-inavii-grid .inavii-grid .inavii-grid__item .inavii-grid__item-box,
-					{{WRAPPER}}.elementor-widget-inavii-grid .inavii-grid .inavii-grid__top-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					{{WRAPPER}}.elementor-widget-inavii-grid .inavii-grid .inavii-grid__top-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
                 ),
                 'conditions' => array(
                     'terms' => array(

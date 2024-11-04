@@ -4,11 +4,11 @@ namespace Inavii\Instagram\RestApi\EndPoints\Front;
 
 use Inavii\Instagram\Cron\ManualRequest\ManualRequestAccount;
 use Inavii\Instagram\FeedsManager\GetAccountsBySource;
+use Inavii\Instagram\Includes\Integration\Views\Views;
 use Inavii\Instagram\PostTypes\Account\AccountPostType;
 use Inavii\Instagram\PostTypes\Feed\FeedPostType;
 use Inavii\Instagram\Utils\TimeChecker;
 use Inavii\Instagram\Wp\ApiResponse;
-use Timber\Timber;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -52,13 +52,13 @@ class FrontFeed
 
     private function noPostsResponse(): WP_REST_Response
     {
-        $html = Timber::compile('view/no-posts.twig', ['message' => '<span>No posts</span> to display']);
+        $html = Views::renderAjaxMessage('<span>No posts</span> to display');
         return $this->apiResponse(true, '', $html);
     }
 
     private function postsResponse(array $widgetData, array $posts): WP_REST_Response
     {
-        $html = Timber::compile('view/index-dynamic.twig', array_merge($widgetData, ['items' => $posts]));
+        $html = Views::renderWithAjax(array_merge($widgetData, ['items' => $posts]));
         return $this->apiResponse(true, '', $html);
     }
 

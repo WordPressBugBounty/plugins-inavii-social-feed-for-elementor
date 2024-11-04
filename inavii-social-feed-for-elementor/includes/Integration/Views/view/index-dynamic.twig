@@ -1,0 +1,5 @@
+{% if is_pro and layout_type == "slider" %}
+    {% include 'view/slider/slider.twig' %}
+{% else %}
+    {% include 'view/grid/grid.twig' %}
+{% endif %}

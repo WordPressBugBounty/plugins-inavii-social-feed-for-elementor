@@ -1,0 +1,14 @@
+<div class="inavii-button__follow-instagram">
+    <a class="inavii-button__follow-instagram-button" href="{{ follow_button_url }}" target="_blank"
+       rel="nofollow noopener" role="button">
+        <span class="inavii-button__text">{{ follow_button_text }}</span>
+
+        {% if (follow_button_icon.icon_class ) %}
+            <span class="inavii-button__follow-icon">
+                {{ follow_button_icon.icon_class }}
+            </span>
+        {% else %}
+            <span class="inavii-button__follow-icon">{{ follow_button_icon.inline_svg }}</span>
+        {% endif %}
+    </a>
+</div>

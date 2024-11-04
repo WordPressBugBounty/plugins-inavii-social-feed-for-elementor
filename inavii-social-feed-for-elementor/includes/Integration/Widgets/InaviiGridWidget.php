@@ -3,13 +3,13 @@
 namespace Inavii\Instagram\Includes\Integration\Widgets;
 
 use Inavii\Instagram\FeedsManager\GetAccountsBySource;
+use Inavii\Instagram\Includes\Integration\Views\Views;
 use Inavii\Instagram\Includes\Integration\WidgetSettings;
 use Inavii\Instagram\PostTypes\Account\AccountPostType;
 use Inavii\Instagram\PostTypes\Feed\FeedPostType;
 use Inavii\Instagram\Utils\TimeChecker;
 use Inavii\Instagram\Utils\VersionChecker;
 use Inavii\Instagram\Wp\AppGlobalSettings;
-use Timber\Timber;
 class InaviiGridWidget extends WidgetsBase {
     public function get_name() : string {
         return 'inavii-grid';
@@ -30,15 +30,6 @@ class InaviiGridWidget extends WidgetsBase {
     private function getRenderOption() : string {
         $settings = new AppGlobalSettings();
         return $settings->getRenderOption();
-    }
-
-    private function twigPath() : string {
-        return INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX . 'view/index-dynamic.twig';
-    }
-
-    private function dynamicTwigExists() : bool {
-        $path = $this->twigPath();
-        return file_exists( $path ) && is_readable( $path );
     }
 
     private function getWidgetData(
@@ -81,7 +72,7 @@ class InaviiGridWidget extends WidgetsBase {
             'is_promotion'                       => $feedSettings['promotion'] ?? false,
             'is_pro'                             => VersionChecker::version()->can_use_premium_code() && VersionChecker::version()->is_premium(),
             'video_playback'                     => $widgetSettings->videoPlayback(),
-            'render_type'                        => ( $this->getRenderOption() === 'PHP' && $this->dynamicTwigExists() ? 'PHP' : 'AJAX' ),
+            'render_type'                        => $this->getRenderOption(),
         ];
     }
 
@@ -91,12 +82,11 @@ class InaviiGridWidget extends WidgetsBase {
         WidgetSettings $widgetSettings,
         array $widgetData
     ) : string {
-        if ( $this->getRenderOption() !== 'PHP' || !$this->dynamicTwigExists() ) {
+        if ( $this->getRenderOption() !== 'PHP' ) {
             return '';
         }
         $posts = $feed->get( $feedId, $widgetSettings->postsCount() );
-        Timber::$locations = INAVII_INSTAGRAM_DIR_TWIG_VIEWS_AJAX;
-        return Timber::compile( $this->twigPath(), array_merge( $widgetData, [
+        return Views::renderWithAjax( array_merge( $widgetData, [
             'items' => $posts,
         ] ) );
     }
@@ -113,15 +103,11 @@ class InaviiGridWidget extends WidgetsBase {
         $feed = new FeedPostType();
         $feedId = $widgetSettings->feedId();
         if ( $feedId === 0 ) {
-            Timber::render( 'view/no-posts.twig', [
-                'message' => '<span>Please select </span> a feed',
-            ] );
+            Views::renderMessage( '<span>Please select </span> a feed' );
             return;
         }
         if ( !$widgetSettings->isAvailableLayout() ) {
-            Timber::render( 'view/no-posts.twig', [
-                'message' => '<span>This layout is no longer available, please choose another one.</span>',
-            ] );
+            Views::renderMessage( '<span>This layout is no longer available, please choose another one.</span>' );
             return;
         }
         $feedSettings = $feed->getSettings( $feedId );
@@ -149,7 +135,7 @@ class InaviiGridWidget extends WidgetsBase {
         if ( $this->isAdmin() ) {
             $this->handleAdminRendering( $account );
         }
-        Timber::render( 'view/index.twig', array_merge( [
+        $data = array_merge( [
             'widgetSettings' => $widgetData,
         ], array_merge( $widgetData, [
             'enable_follow_button'        => $widgetSettings->enableFollowButton(),
@@ -166,16 +152,15 @@ class InaviiGridWidget extends WidgetsBase {
                 $widgetSettings,
                 $widgetData
             ),
-        ] ) ) );
+        ] ) );
+        Views::renderWithPhp( $data );
     }
 
     private function handleAdminRendering( $account ) : void {
         try {
             $lastFeedUpdate = (int) TimeChecker::calculateTimeDifference( (string) $account->lastUpdate() )->days;
             if ( $account->issues()['reconnectRequired'] ) {
-                Timber::render( 'view/reconnect.twig', [
-                    'lastUpdate' => $lastFeedUpdate,
-                ] );
+                Views::rednerReconnectMessage( $lastFeedUpdate );
             }
         } catch ( \Exception $e ) {
             // Handle exception if needed

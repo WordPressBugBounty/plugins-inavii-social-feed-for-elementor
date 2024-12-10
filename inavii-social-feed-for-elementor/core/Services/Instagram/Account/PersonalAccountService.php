@@ -27,14 +27,14 @@ class PersonalAccountService implements Account
     public function get(): InstagramAccount
     {
         $response = $this->integration->get('https://graph.instagram.com/v16.0/me', [
-            'fields' => 'id,username,media_count,account_type',
+            'fields' => 'id,username,media_count,account_type,profile_picture_url,biography',
             'access_token' => $this->accessToken,
         ]);
 
         return new InstagramAccount(array_merge($response, [
             'accessToken' => $this->accessToken,
             'tokenExpires' => $this->tokenExpires,
-            'account_type' => AccountPostType::PERSONAL
+            'account_type' => AccountPostType::BUSINESS_BASIC
         ]));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Inavii\Instagram\RestApi\EndPoints\Account;
 
+use Inavii\Instagram\PostTypes\Account\AccountPostType;
 use Inavii\Instagram\Services\Instagram\Account\BusinessAccountService;
 use Inavii\Instagram\Services\Instagram\Account\PersonalAccountService;
 use Inavii\Instagram\Services\Instagram\MessageNotProvidedException;
@@ -51,13 +52,13 @@ class AccessTokenGenerator
         }
 
         $accountService = (new BusinessAccountService($accessToken, $tokenExpires))->get($params['userId']);
-        return $this->createAccountResponse('business', $accountService);
+        return $this->createAccountResponse(AccountPostType::BUSINESS, $accountService);
     }
 
     private function processPersonalAccount($accessToken, $tokenExpires): WP_REST_Response
     {
         $accountService = (new PersonalAccountService($accessToken, $tokenExpires))->get();
-        return $this->createAccountResponse('personal', $accountService);
+        return $this->createAccountResponse(AccountPostType::BUSINESS_BASIC, $accountService);
     }
 
     private function createAccountResponse($accountType, $accountService): WP_REST_Response

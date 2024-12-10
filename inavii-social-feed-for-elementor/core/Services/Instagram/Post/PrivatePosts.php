@@ -30,7 +30,7 @@ class PrivatePosts implements Posts
             $this->request->buildUrl('https://graph.instagram.com/v16.0/me/media', [
                 'access_token' => $accessToken,
                 'limit' => $limit,
-                'fields' => (new FieldsBuilder(false))->getAllFieldsAsString(),
+                'fields' => (new FieldsBuilder(true))->getAllFieldsAsString(),
             ])
         );
     }

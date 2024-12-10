@@ -29,7 +29,7 @@ class RefreshAccessToken
      */
     public function refresh(): void
     {
-        if ($this->account->accountType() === AccountPostType::PERSONAL) {
+        if ($this->account->accountType() === AccountPostType::BUSINESS_BASIC || $this->account->accountType() === AccountPostType::PERSONAL) {
             $newToken = $this->accessToken->refresh();
             $accountData = $this->account->meta();
             $accountData['accessToken'] = $newToken->newAccessToken();

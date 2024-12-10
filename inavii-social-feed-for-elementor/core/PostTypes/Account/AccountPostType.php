@@ -10,6 +10,8 @@ class AccountPostType extends PostType {
 
     public const PERSONAL = 'personal';
 
+    public const BUSINESS_BASIC = 'business_basic';
+
     public const META_KEY_ACCOUNT = 'inavii_social_feed_account';
 
     public const META_KEY_MEDIA = 'inavii_social_feed_media';

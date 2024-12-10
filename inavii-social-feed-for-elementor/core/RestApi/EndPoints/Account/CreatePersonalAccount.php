@@ -30,7 +30,7 @@ class CreatePersonalAccount
         $account = (new PersonalAccountService($params['accessToken'], $params['tokenExpires']))->get();
 
         return $this->api->response(
-            (new CreateAccount(AccountPostType::PERSONAL))->create($account)
+            (new CreateAccount(AccountPostType::BUSINESS_BASIC))->create($account)
         );
     }
 }

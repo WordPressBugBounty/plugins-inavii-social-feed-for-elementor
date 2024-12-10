@@ -45,20 +45,6 @@ class TabBox
             )
         );
 
-        if (version_compare(ELEMENTOR_VERSION, '3.19.0', '>')) {
-            $widget->add_control(
-                'likes_switch_info',
-                [
-                    'type' => Controls_Manager::ALERT,
-                    'alert_type' => 'info',
-                    'heading' => esc_html__( 'This option only works with a business Instagram account.', 'inavii-social-feed-e' ),
-                    'condition' => array(
-                        'likes_switch' => 'yes',
-                    ),
-                ]
-            );
-        }
-
         $widget->add_control(
             'comments_switch',
             array(
@@ -71,20 +57,6 @@ class TabBox
                 'classes' => self::titleLabelProClass() . ' ' . self::optionProClass(),
             )
         );
-
-        if (version_compare(ELEMENTOR_VERSION, '3.19.0', '>')) {
-            $widget->add_control(
-                'comments_switch_info',
-                [
-                    'type' => Controls_Manager::ALERT,
-                    'alert_type' => 'info',
-                    'heading' => esc_html__( 'This option only works with a business Instagram account.', 'inavii-social-feed-e' ),
-                    'condition' => array(
-                        'comments_switch' => 'yes',
-                    ),
-                ]
-            );
-        }
 
         $widget->add_control(
             'section_content_box_note',

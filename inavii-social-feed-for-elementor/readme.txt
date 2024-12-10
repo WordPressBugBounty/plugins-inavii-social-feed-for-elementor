@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.6
-Stable tag: 2.7.4
+Stable tag: 2.7.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,12 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.5 (2024-12-10) =
+- Add: Added support for the new Instagram API:
+  - Business Basic accounts can now be connected via Instagram login.
+  - Business Advanced accounts can now be connected via Facebook login.
+- Update: Adjusted authentication flow to comply with the discontinuation of the Instagram Basic Display API.
 
 = 2.7.4 (2024-12-09) =
 - The ability to connect personal accounts has been blocked due to Facebook discontinuing support for the Instagram Basic Display API as of December 2024.

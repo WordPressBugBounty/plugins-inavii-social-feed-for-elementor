@@ -3,7 +3,7 @@ Contributors: Inavii, maciejsromek, tkatra, freemius
 Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 2.7.5
 Requires PHP: 7.4
 License: GPLv2 or later

@@ -53,7 +53,7 @@ class RegisterAssets {
         wp_enqueue_style(
             'inavii-styles',
             INAVII_INSTAGRAM_URL . $this->getStylePath(),
-            array(),
+            array('swiper'),
             INAVII_SOCIAL_FEED_E_VERSION
         );
         if ( wp_script_is( 'swiper', 'registered' ) === false ) {

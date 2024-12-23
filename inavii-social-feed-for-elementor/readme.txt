@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,9 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.6 (2024-12-23) =
+- Adjusted the plugin to work with Swiper 8, as required by the latest versions of Elementor.
 
 = 2.7.5 (2024-12-10) =
 - Add: Added support for the new Instagram API:

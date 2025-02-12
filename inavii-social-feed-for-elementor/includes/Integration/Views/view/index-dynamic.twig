@@ -3,3 +3,12 @@
 {% else %}
     {% include 'view/grid/grid.twig' %}
 {% endif %}
+
+{% if (enable_photo_linking == "lightbox") %}
+    {% include 'view/lightbox/lightbox.twig' %}
+{% endif %}
+
+
+{% if (enable_photo_linking == "popup") %}
+    {% include 'view/popup/popup.twig' %}
+{% endif %}

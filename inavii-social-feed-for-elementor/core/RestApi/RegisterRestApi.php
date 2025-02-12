@@ -19,6 +19,7 @@ use Inavii\Instagram\RestApi\EndPoints\Feeds\Feeds;
 use Inavii\Instagram\RestApi\EndPoints\Feeds\FeedUpdate;
 use Inavii\Instagram\RestApi\EndPoints\App\Settings;
 use Inavii\Instagram\RestApi\EndPoints\Front\FrontFeed;
+use Inavii\Instagram\RestApi\EndPoints\Front\LoadMore;
 use Inavii\Instagram\RestApi\EndPoints\MediaCreator\MediaSource;
 use Inavii\Instagram\RestApi\EndPoints\Templates\Template;
 use Inavii\Instagram\Utils\VersionChecker;

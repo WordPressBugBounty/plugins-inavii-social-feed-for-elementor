@@ -9,6 +9,7 @@ use Inavii\Instagram\FeedsManager\Source\TaggedSource;
 use Inavii\Instagram\PostTypes\Feed\FeedPostType;
 use Inavii\Instagram\PostTypes\Media\MediaPostType;
 use Inavii\Instagram\Utils\FiltersFeed;
+use Inavii\Instagram\Wp\QueryResult;
 
 class MyInstagramFeed extends AbstractInstagramFeed
 {
@@ -29,19 +30,22 @@ class MyInstagramFeed extends AbstractInstagramFeed
         $this->feedSettings = $this->feedPostType->getSettings($feedId);
     }
 
-    public function get(): array
+    public function get(): QueryResult
     {
         try {
             $source = $this->getSources() ?? [];
             $media = $this->mediaPostType->getMedia($source, $this->feedSettings, $this->numberOfPosts, $this->offset);
 
-            if (!$media) {
+            if (!$media->getPosts()) {
                 return $this->getMediaOldVersionSupport();
             }
 
-            $posts = $this->addAdvancedOptions($media, $this->feedSettings);
+            $posts = $this->addAdvancedOptions($media->getPosts(), $this->feedSettings);
 
-            return \iterator_to_array($this->preparePosts($posts));
+            $album = \iterator_to_array($this->preparePosts($posts));
+
+            return new QueryResult($album, $media->getTotal());
+
         } catch (FeedSourceException $e) {
             return $this->getMediaOldVersionSupport();
         }
@@ -51,7 +55,7 @@ class MyInstagramFeed extends AbstractInstagramFeed
     {
         try {
             $source = $this->getSources() ?? [];
-            return $this->mediaPostType->getMediaForApi($source, $this->feedSettings);
+            return $this->mediaPostType->getMediaForApi($source, $this->feedSettings)->getPosts();
         } catch (FeedSourceException $e) {
             return [];
         }
@@ -60,12 +64,12 @@ class MyInstagramFeed extends AbstractInstagramFeed
     /**
      * @deprecated 2.4.3.
      */
-    private function getMediaOldVersionSupport(): array
+    private function getMediaOldVersionSupport(): QueryResult
     {
         $media = $this->callBackMedia();
 
         if (!$media) {
-            return [];
+            return new QueryResult([], 0);
         }
 
         $posts = (new FiltersFeed($media, $this->feedSettings))->filter();
@@ -74,7 +78,10 @@ class MyInstagramFeed extends AbstractInstagramFeed
             $posts = array_slice($posts, 0, $this->numberOfPosts);
         }
 
-        return \iterator_to_array($this->preparePosts($posts));
+        $album = \iterator_to_array($this->preparePosts($posts));
+
+        return new QueryResult($album, count($album));
+
     }
 
     private function callBackMedia(): array
@@ -144,7 +151,7 @@ class MyInstagramFeed extends AbstractInstagramFeed
                                 ? TaggedSource::create($accountID)
                                 : InstagramSource::create($accountID);
                             try {
-                                $media = $this->mediaPostType->getMediaBySource($mediaSource);
+                                $media = $this->mediaPostType->getMediaBySource($mediaSource)->getPosts();
                                 $this->deleteMedia($media);
                             } catch (FeedSourceException $e) {
                             }
@@ -155,7 +162,7 @@ class MyInstagramFeed extends AbstractInstagramFeed
                         if ($this->isLastBusinessAccount($accountID)) {
                             $mediaSource = HashtagSource::get($value);
                             try {
-                                $media = $this->mediaPostType->getMediaBySource($mediaSource);
+                                $media = $this->mediaPostType->getMediaBySource($mediaSource)->getPosts();
                                 $this->deleteMedia($media);
                             } catch (FeedSourceException $e) {
                             }

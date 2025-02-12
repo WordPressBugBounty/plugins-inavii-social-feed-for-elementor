@@ -187,9 +187,11 @@ class Query
         return $this;
     }
 
-    public function posts(): array
+    public function posts(): QueryResult
     {
-        return get_posts($this->query);
+        $query = new \WP_Query($this->query);
+
+        return new QueryResult($query->posts, $query->found_posts);
     }
 
     public function post($postID)

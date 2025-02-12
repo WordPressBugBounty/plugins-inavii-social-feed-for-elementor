@@ -74,7 +74,7 @@ class FeedPostType extends PostType
         $feedsManager = new MyInstagramFeed($postID);
 
         return [
-            'media' => array_values($feedsManager->getForApi()),
+            'media' => $feedsManager->getForApi(),
             'settings' => $settings,
             'feedType' => $feedType,
             // Deprecated from 2.4.3
@@ -82,7 +82,7 @@ class FeedPostType extends PostType
         ];
     }
 
-    public function get(int $postID, int $numberOfPosts = 30, $offset = 0): array
+    public function get(int $postID, int $numberOfPosts = 30, $offset = 0)
     {
         return (new MyInstagramFeed($postID, $numberOfPosts, $offset))->get();
     }
@@ -106,7 +106,7 @@ class FeedPostType extends PostType
     {
         return array_map(function ($post) {
             return $this->serializeData($post);
-        }, (new Query($this->slug()))->numberOfPosts()->order('ASC')->posts());
+        }, (new Query($this->slug()))->numberOfPosts()->order('ASC')->posts()->getPosts());
     }
 
     public function post($postID): array
@@ -142,7 +142,8 @@ class FeedPostType extends PostType
         $posts = (new Query($this->slug()))
             ->numberOfPosts()
             ->order('DESC')
-            ->posts();
+            ->posts()
+            ->getPosts();
 
         if (empty($posts)) {
             return [];

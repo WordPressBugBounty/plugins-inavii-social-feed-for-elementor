@@ -42,6 +42,15 @@ class SectionVideo
             );
         }
 
+        $widget->add_control(
+            'section_video_box_note',
+            [
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => self::premiumInfo(),
+                'classes' => self::buttonClassGetPro(),
+            ]
+        );
+
         $widget->end_controls_section();
     }
 }

@@ -9,6 +9,7 @@ class ComposerStaticInit3dd97fb8e39e652a02dc98db4df717d1
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '8d50dc88e56bace65e1e72f6017983ed' => __DIR__ . '/..' . '/freemius/wordpress-sdk/start.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -238,6 +239,9 @@ class ComposerStaticInit3dd97fb8e39e652a02dc98db4df717d1
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\SectionFooterBoxStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/SectionFooterBoxStyle.php',
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabFollowButtonStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabFollowButtonStyle.php',
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabHoverStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabHoverStyle.php',
+        'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabLoadMoreHoverStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabLoadMoreHoverStyle.php',
+        'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabLoadMoreNormalStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabLoadMoreNormalStyle.php',
+        'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabLoadMoreStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabLoadMoreStyle.php',
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\FooterBox\\Style\\TabNormalStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/FooterBox/Style/TabNormalStyle.php',
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\HeaderBox\\Content\\SectionHeaderBox' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/HeaderBox/Content/SectionHeaderBox.php',
         'Inavii\\Instagram\\Includes\\Integration\\Widgets\\Controls\\HeaderBox\\Style\\SectionHeaderBoxStyle' => __DIR__ . '/../..' . '/includes/Integration/Widgets/Controls/HeaderBox/Style/SectionHeaderBoxStyle.php',
@@ -290,6 +294,7 @@ class ComposerStaticInit3dd97fb8e39e652a02dc98db4df717d1
         'Inavii\\Instagram\\RestApi\\EndPoints\\Feeds\\FeedUpdate' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Feeds/FeedUpdate.php',
         'Inavii\\Instagram\\RestApi\\EndPoints\\Feeds\\Feeds' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Feeds/Feeds.php',
         'Inavii\\Instagram\\RestApi\\EndPoints\\Front\\FrontFeed' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Front/FrontFeed.php',
+        'Inavii\\Instagram\\RestApi\\EndPoints\\Front\\LoadMore' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Front/LoadMore.php',
         'Inavii\\Instagram\\RestApi\\EndPoints\\MediaCreator\\MediaSource' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/MediaCreator/MediaSource.php',
         'Inavii\\Instagram\\RestApi\\EndPoints\\Media\\GenerateThumbnailsProcessor' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Media/GenerateThumbnailsProcessor.php',
         'Inavii\\Instagram\\RestApi\\EndPoints\\Media\\ImportMedia' => __DIR__ . '/../..' . '/core/RestApi/EndPoints/Media/ImportMedia.php',
@@ -342,6 +347,7 @@ class ComposerStaticInit3dd97fb8e39e652a02dc98db4df717d1
         'Inavii\\Instagram\\Wp\\ImportMediaBackgroundProcess' => __DIR__ . '/../..' . '/core/Wp/ImportMediaBackgroundProcess.php',
         'Inavii\\Instagram\\Wp\\PostType' => __DIR__ . '/../..' . '/core/Wp/PostType.php',
         'Inavii\\Instagram\\Wp\\Query' => __DIR__ . '/../..' . '/core/Wp/Query.php',
+        'Inavii\\Instagram\\Wp\\QueryResult' => __DIR__ . '/../..' . '/core/Wp/QueryResult.php',
         'Routes' => __DIR__ . '/..' . '/upstatement/routes/Routes.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',

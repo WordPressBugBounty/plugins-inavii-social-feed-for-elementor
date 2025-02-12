@@ -31,7 +31,7 @@ abstract class AbstractMediaCreator
         return $results;
     }
 
-    protected function findMedia(string $source, $time = 3600): array
+    protected function findMedia(string $source, $time = 3600)
     {
         $mostRecentPostDate = $this->mediaPostType->getMostRecentPostDate($source);
 
@@ -39,7 +39,7 @@ abstract class AbstractMediaCreator
             if (TimeChecker::postShouldBeRequest($mostRecentPostDate, $time)) {
                 return [];
             }
-            return $this->mediaPostType->getMediaBySource($source);
+            return $this->mediaPostType->getMediaBySource($source)->getPosts();
         } catch (\Exception $e) {
             return [];
         }

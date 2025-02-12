@@ -6,6 +6,7 @@ use Inavii\Instagram\Utils\FeedAdvancedFilters;
 use Inavii\Instagram\Utils\FeedOrder;
 use Inavii\Instagram\Wp\PostType;
 use Inavii\Instagram\Wp\Query;
+use Inavii\Instagram\Wp\QueryResult;
 use WP_Post;
 
 class MediaPostType extends PostType
@@ -80,14 +81,14 @@ class MediaPostType extends PostType
             ->orderByMetaValue($order->key, $order->valueType, $order->order, $order->isRandom)
             ->posts();
 
-        if (!$query) {
+        if (!$query->getPosts()) {
             return null;
         }
 
-        return $query[0]->{self::LAST_REQUESTED};
+        return $query->getPosts()[0]->{self::LAST_REQUESTED};
     }
 
-    public function getMediaBySource($source): array
+    public function getMediaBySource($source) : QueryResult
     {
         $order = FeedOrder::create('mostRecentFirst');
 
@@ -99,7 +100,7 @@ class MediaPostType extends PostType
         return $this->processQuery($query);
     }
 
-    public function getMedia($source, array $settings, int $postsCount = 30, $offset = 0): array
+    public function getMedia($source, array $settings, int $postsCount = 30, $offset = 0) : QueryResult
     {
         $order = FeedOrder::create($settings['postOrder'] ?? 'mostRecentFirst');
 
@@ -120,7 +121,7 @@ class MediaPostType extends PostType
         return $this->processQuery($query);
     }
 
-    public function getMediaForApi($source, array $settings, int $postsCount = -1): array
+    public function getMediaForApi($source, array $settings, int $postsCount = -1): QueryResult
     {
         $order = FeedOrder::create($settings['postOrder']);
 
@@ -133,15 +134,18 @@ class MediaPostType extends PostType
         return $this->processQuery($query);
     }
 
-    private function processQuery($query): array
+
+    private function processQuery(QueryResult $query): QueryResult
     {
         if (!$query) {
-            return [];
+            return new QueryResult([], 0);
         }
 
-        return array_map(function ($post) {
+        $data = array_map(function ($post) {
             return $this->buildMediaAlbum($post);
-        }, $query);
+        }, $query->getPosts());
+
+        return new QueryResult($data, $query->getTotal());
     }
 
     private function buildMediaAlbum(WP_Post $post): array

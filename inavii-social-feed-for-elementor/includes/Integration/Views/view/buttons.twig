@@ -1,4 +1,7 @@
 <div class="inavii-button__box">
+    {% if (enable_load_more_button and layout_type != "slider" and is_pro ) %}
+        {% include 'view/buttons/load-more.twig' %}
+    {% endif %}
     {% if (enable_follow_button) %}
         {% include 'view/buttons/follow-instagram.twig' %}
     {% endif %}

@@ -41,7 +41,7 @@ class FrontFeed
 
         $posts = $this->feed->get($feedId, $postCount, $feedOffset);
 
-        if (empty($posts)) {
+        if (empty($posts->getPosts())) {
             return $this->noPostsResponse();
         }
 
@@ -56,10 +56,13 @@ class FrontFeed
         return $this->apiResponse(true, '', $html);
     }
 
-    private function postsResponse(array $widgetData, array $posts): WP_REST_Response
+    private function postsResponse(array $widgetData, $posts): WP_REST_Response
     {
-        $html = Views::renderWithAjax(array_merge($widgetData, ['items' => $posts]));
-        return $this->apiResponse(true, '', $html);
+        $html = Views::renderWithAjax(array_merge($widgetData, ['items' => $posts->getPosts()]));
+        return $this->apiResponse(true, '', [
+            'html' => $html,
+            'total' => $posts->getTotal(),
+        ]);
     }
 
     private function sanitizeInt($value): int

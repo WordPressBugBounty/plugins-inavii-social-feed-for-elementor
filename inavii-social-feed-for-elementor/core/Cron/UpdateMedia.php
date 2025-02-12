@@ -90,7 +90,7 @@ class UpdateMedia {
     }
 
     private function deleteMedia( $source, $media ) {
-        $mediaToDelete = $this->instagramMediaComparer->findElementsToDelete( $this->mediaPostType->getMediaBySource( $source ), $media );
+        $mediaToDelete = $this->instagramMediaComparer->findElementsToDelete( $this->mediaPostType->getMediaBySource( $source )->getPosts(), $media );
         foreach ( $mediaToDelete as $medium ) {
             Media::delete( $medium['mediaId'] );
             foreach ( $medium['children'] ?? [] as $child ) {

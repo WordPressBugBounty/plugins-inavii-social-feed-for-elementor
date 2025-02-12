@@ -6,6 +6,21 @@ use Timber\Timber;
 
 class Views
 {
+    public static function renderFeedItems($data)
+    {
+        return Timber::compile('view/grid/grid.twig', $data);
+    }
+
+    public static function renderPopup($data)
+    {
+        return Timber::compile('view/popup/swiper-inner-wrapper.twig', $data);
+    }
+
+    public static function renderLightbox($data)
+    {
+        return Timber::compile('view/lightbox/swiper-inner-wrapper.twig', $data);
+    }
+
     public static function renderWithAjax($data)
     {
         return Timber::compile('view/index-dynamic.twig', $data);

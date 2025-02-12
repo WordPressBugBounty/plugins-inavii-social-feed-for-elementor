@@ -84,6 +84,14 @@ class WidgetSettings {
         return $this->setting( 'follow_button_text' );
     }
 
+    public function enableLoadMoreButton() : bool {
+        return $this->setting( 'enable_load_more_button' ) === 'yes';
+    }
+
+    public function loadMoreButtonText() {
+        return $this->setting( 'load_more_button_text' );
+    }
+
     public function followButtonIcon() {
         return $this->setting( 'follow_icon_button' );
     }

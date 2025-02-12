@@ -87,7 +87,7 @@ class InaviiGridWidget extends WidgetsBase {
         }
         $posts = $feed->get( $feedId, $widgetSettings->postsCount() );
         return Views::renderWithAjax( array_merge( $widgetData, [
-            'items' => $posts,
+            'items' => $posts->getPosts(),
         ] ) );
     }
 
@@ -131,6 +131,7 @@ class InaviiGridWidget extends WidgetsBase {
                 $account,
                 $feedSettings
             );
+            $widgetData['load_more_button_number_posts_to_load'] = $widgetSettings->loadMoreButtonNumberPostsToLoad__premium_only();
         }
         if ( $this->isAdmin() ) {
             $this->handleAdminRendering( $account );
@@ -139,6 +140,8 @@ class InaviiGridWidget extends WidgetsBase {
             'widgetSettings' => $widgetData,
         ], array_merge( $widgetData, [
             'enable_follow_button'        => $widgetSettings->enableFollowButton(),
+            'enable_load_more_button'     => $widgetSettings->enableLoadMoreButton(),
+            'load_more_button_text'       => $widgetSettings->loadMoreButtonText(),
             'follow_button_icon'          => $this->icon( $widgetSettings->followButtonIcon() ),
             'follow_button_text'          => $widgetSettings->followButtonText(),
             'enable_header_follow_button' => $widgetSettings->enableHeaderFollowButton(),

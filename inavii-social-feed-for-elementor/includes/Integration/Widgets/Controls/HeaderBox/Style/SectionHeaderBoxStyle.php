@@ -337,21 +337,6 @@ class SectionHeaderBoxStyle implements ControlsInterface {
         );
 
         $widget->add_responsive_control(
-            'follow_button_header_margin',
-            array(
-                'label' => __('Margin', 'inavii-social-feed-e'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => array('px', 'em', '%'),
-                'selectors' => array(
-                    '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ),
-                'condition' => array(
-                    'enable_header_follow_button' => 'yes',
-                ),
-            )
-        );
-
-        $widget->add_responsive_control(
             'follow_button_header_padding',
             array(
                 'label' => __('Padding', 'inavii-social-feed-e'),
@@ -374,6 +359,25 @@ class SectionHeaderBoxStyle implements ControlsInterface {
                 'size_units' => array('px', '%'),
                 'selectors' => array(
                     '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ),
+                'condition' => array(
+                    'enable_header_follow_button' => 'yes',
+                ),
+            )
+        );
+
+        $widget->add_control(
+            'follow_header_text_spacing',
+            array(
+                'label' => __('Text spacing', 'inavii-social-feed-e'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => array(
+                    'px' => array(
+                        'max' => 100,
+                    ),
+                ),
+                'selectors' => array(
+                    '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header' => 'gap: {{SIZE}}{{UNIT}};',
                 ),
                 'condition' => array(
                     'enable_header_follow_button' => 'yes',
@@ -584,29 +588,6 @@ class SectionHeaderBoxStyle implements ControlsInterface {
                 'selectors' => array(
                     '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header span i:before' => 'font-size: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header span svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
-                ),
-                'condition' => array(
-                    'enable_header_follow_button' => 'yes',
-                ),
-            )
-        );
-
-        $widget->add_control(
-            'follow_header_text_spacing',
-            array(
-                'label' => __('Text spacing', 'inavii-social-feed-e'),
-                'type' => Controls_Manager::SLIDER,
-                'range' => array(
-                    'px' => array(
-                        'max' => 100,
-                    ),
-                ),
-                'default' => array(
-                    'size' => 5,
-                    'unit' => 'px',
-                ),
-                'selectors' => array(
-                    '{{WRAPPER}} .inavii-button__follow-instagram-button.inavii__header .inavii-button__text' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ),
                 'condition' => array(
                     'enable_header_follow_button' => 'yes',

@@ -18,7 +18,7 @@ class TabFollowButtonStyle
                 [
                     'type' => Controls_Manager::ALERT,
                     'alert_type' => 'info',
-                    'heading' => esc_html__( 'Follow Button', 'inavii-social-feed-e' ),
+                    'heading' => esc_html__( 'Follow Button General', 'inavii-social-feed-e' ),
                 ]
             );
         }
@@ -29,18 +29,6 @@ class TabFollowButtonStyle
                 'name' => 'follow_button_typography',
                 'label' => __('Typography', 'inavii-social-feed-e'),
                 'selector' => '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header)',
-            )
-        );
-
-        $widget->add_responsive_control(
-            'follow_button_margin',
-            array(
-                'label' => __('Margin', 'inavii-social-feed-e'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => array('px', 'em', '%'),
-                'selectors' => array(
-                    '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header)' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ),
             )
         );
 
@@ -64,6 +52,22 @@ class TabFollowButtonStyle
                 'size_units' => array('px', '%'),
                 'selectors' => array(
                     '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header)' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ),
+            )
+        );
+
+        $widget->add_control(
+            'follow_text_spacing',
+            array(
+                'label' => __('Text spacing', 'inavii-social-feed-e'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => array(
+                    'px' => array(
+                        'max' => 100,
+                    ),
+                ),
+                'selectors' => array(
+                    '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header)' => 'gap: {{SIZE}}{{UNIT}};',
                 ),
             )
         );
@@ -128,26 +132,6 @@ class TabFollowButtonStyle
         );
 
         $widget->add_control(
-            'follow_text_spacing',
-            array(
-                'label' => __('Text spacing', 'inavii-social-feed-e'),
-                'type' => Controls_Manager::SLIDER,
-                'range' => array(
-                    'px' => array(
-                        'max' => 100,
-                    ),
-                ),
-                'default' => array(
-                    'size' => 5,
-                    'unit' => 'px',
-                ),
-                'selectors' => array(
-                    '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header) .inavii-button__text' => 'margin-right: {{SIZE}}{{UNIT}};',
-                ),
-            )
-        );
-
-        $widget->add_control(
             'follow_footer_icon_color_hover',
             array(
                 'label' => __('Icon Color Hover', 'inavii-social-feed-e'),
@@ -155,9 +139,6 @@ class TabFollowButtonStyle
                 'selectors' => array(
                     '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header):hover span i:before' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .inavii-button__follow-instagram-button:not(.inavii__header):hover span svg *' => 'fill: {{VALUE}}!important;',
-                ),
-                'condition' => array(
-                    'enable_header_follow_button' => 'yes',
                 ),
             )
         );

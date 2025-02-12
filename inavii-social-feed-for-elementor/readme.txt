@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 2.7.6
+Stable tag: 2.7.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -54,6 +54,7 @@ Integrating **Instagram** with your website has never been easier. Our **[Inavii
 - **Tagged Instagram Posts**: Display tagged posts from **Instagram** directly on your site. It’s an ideal way to highlight important moments from your **Instagram** profile.
 - **Instagram Hashtag Channels**: Create channels based on selected **Instagram** hashtags, ensuring your **Instagram** feed is perfectly aligned with current trends.
 - **Combine Different Instagram Feeds**: Gain more possibilities by combining different types of **Instagram** feeds into one unique solution.
+- **Load More**: Now you can load more Instagram photos with the convenient "Load More" button, ensuring a smooth and dynamic browsing experience.
 
 ### Start Using **Instagram** in 3 Simple Steps
 
@@ -174,6 +175,10 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.7 (2025-02-12) =
+- Updated libraries.
+- Added new "Load More" functionality. (PRO)
 
 = 2.7.6 (2024-12-23) =
 - Adjusted the plugin to work with Swiper 8, as required by the latest versions of Elementor.

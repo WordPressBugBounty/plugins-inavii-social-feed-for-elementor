@@ -48,7 +48,7 @@ class AccountPostType extends PostType {
             return array_merge( (array) $this->getMeta( $post->ID, self::META_KEY_ACCOUNT ), [
                 'wpAccountID' => $post->ID,
             ] );
-        }, ( new Query($this->slug()) )->numberOfPosts( $postNumber )->posts() );
+        }, ( new Query($this->slug()) )->numberOfPosts( $postNumber )->posts()->getPosts() );
     }
 
     /**

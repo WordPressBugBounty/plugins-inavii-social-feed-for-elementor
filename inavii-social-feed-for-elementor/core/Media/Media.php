@@ -34,7 +34,7 @@ class Media
     public static function baseUrl(): string
     {
         $upload_dir = wp_upload_dir();
-        return $upload_dir['baseurl'] . '/' . str_replace('\\', '/', self::DESTINATION);
+        return rtrim($upload_dir['baseurl'], '/') . '/' . ltrim(str_replace('\\', '/', self::DESTINATION), '/');
     }
 
     public static function assetImageUrl(string $imageName): string

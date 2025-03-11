@@ -169,7 +169,8 @@ class FeedPostType extends PostType
         return (new Query($this->slug()))->withMetaQuery(self::META_KEY_ACCOUNT_RELATED, $accountID)
             ->withFields('ids')
             ->numberOfPosts()
-            ->posts();
+            ->posts()
+            ->getPosts();
     }
 
     /**

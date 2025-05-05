@@ -28,6 +28,8 @@ class UpdateMedia {
 
     private $instagramMediaComparer;
 
+    private $uniqueAccountID = [];
+
     public function __construct() {
         $this->feedPostType = new FeedPostType();
         $this->mediaPostType = new MediaPostType();
@@ -50,9 +52,15 @@ class UpdateMedia {
     }
 
     public function update() : void {
-        $sources = $this->extractSources();
-        foreach ( $sources as $source ) {
-            $this->fetch( $source );
+        CronLogger::logStart();
+        try {
+            $sources = $this->extractSources();
+            foreach ( $sources as $source ) {
+                $this->fetch( $source );
+            }
+            CronLogger::logSuccess();
+        } catch ( \Throwable $e ) {
+            CronLogger::logError( $e->getMessage() );
         }
     }
 
@@ -60,6 +68,7 @@ class UpdateMedia {
         try {
             $this->processAccounts( $source['accounts'] ?? [] );
         } catch ( \RuntimeException|\InvalidArgumentException|InstagramOAuthException|MessageNotProvidedException $e ) {
+            throw $e;
         }
     }
 
@@ -69,6 +78,10 @@ class UpdateMedia {
      */
     private function processAccounts( array $accountsIds ) {
         foreach ( $accountsIds as $accountID ) {
+            if ( in_array( $accountID, $this->uniqueAccountID ) ) {
+                continue;
+            }
+            $this->uniqueAccountID[] = $accountID;
             $media = $this->instagramPosts->handleCronRequest( $accountID );
             $this->deleteMedia( InstagramSource::create( $accountID ), $media );
         }

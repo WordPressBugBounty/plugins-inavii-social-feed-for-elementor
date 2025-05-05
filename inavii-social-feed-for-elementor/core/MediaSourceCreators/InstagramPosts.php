@@ -43,9 +43,11 @@ class InstagramPosts extends AbstractMediaCreator
 
         $media = $this->fetchMedia($dataSource, $source);
 
+		$newMedia = $this->createFeeds($media);
+
         $this->import->startImport($media);
 
-        return $this->createFeeds($media);
+        return $newMedia;
     }
 
     /**
@@ -56,18 +58,14 @@ class InstagramPosts extends AbstractMediaCreator
     {
         $source = InstagramSource::create($dataSource);
 
-        $media = $this->findMedia($source, 60);
-
-        if ($media) {
-            return $media;
-        }
-
         $media = $this->fetchMedia($dataSource, $source);
+
+		$newMedia = $this->createFeeds($media);
 
         (new ImporterMediaProcessor())->task($media);
         (new GenerateThumbnailsProcessor())->task($media);
 
-        return $this->createFeeds($media);
+        return $newMedia;
     }
 
     /**

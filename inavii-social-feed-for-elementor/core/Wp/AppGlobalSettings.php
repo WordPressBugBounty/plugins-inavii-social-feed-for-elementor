@@ -5,6 +5,7 @@ namespace Inavii\Instagram\Wp;
 class AppGlobalSettings
 {
     const CRON_SCHEDULE_UPDATE_MEDIA_TASK = 'inavii_social_feed_update_media';
+    const CRON_SCHEDULE_REFRESH_TOKEN_TASK = 'inavii_social_feed_refresh_token';
 
     public function saveNumberOfPostsImported(int $numberOfPostsImported = 50): void
     {

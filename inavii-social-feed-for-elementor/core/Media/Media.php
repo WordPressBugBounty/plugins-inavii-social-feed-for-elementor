@@ -118,6 +118,11 @@ class Media
         return file_exists((new Media)->getImageDir($id) . self::IMAGE_TYPE);
     }
 
+	public static function mediaExist($id, $mediaSize): bool
+	{
+		return file_exists((new Media)->getImageDir($id) . $mediaSize . self::IMAGE_TYPE);
+	}
+
     public static function deleteMediaDirectory(): void
     {
         $baseDir = self::baseDir();

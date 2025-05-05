@@ -3,8 +3,8 @@ Contributors: Inavii, maciejsromek, tkatra, freemius
 Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
-Tested up to: 6.7
-Stable tag: 2.7.8
+Tested up to: 6.8
+Stable tag: 2.7.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -175,6 +175,10 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.9 (2025-05-05) =
+- Add: Added a new Troubleshooting tab for diagnosing and resolving issues related to CRON jobs.
+- Fixed: Improved the reliability and execution of CRON-related functionality.
 
 = 2.7.8 (2025-03-11) =
 - Fixed: Resolved issues with certain methods that could cause unexpected behavior in specific scenarios.

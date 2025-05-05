@@ -59,6 +59,15 @@ class SettingsPage {
             array( $this, 'render_page' )
         );
 
+	    add_submenu_page(
+		    'inavii-instagram-settings',
+		    'Troubleshooting',
+		    'Troubleshooting',
+		    'manage_options',
+		    'inavii-instagram-settings#/troubleshooting',
+		    array( $this, 'render_page' )
+	    );
+
         add_submenu_page(
             'inavii-instagram-settings',
             'Guides',

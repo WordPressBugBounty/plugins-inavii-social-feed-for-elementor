@@ -20,8 +20,10 @@ class ImporterMediaProcessor
     public function task($items): bool
     {
         foreach ($items as $item) {
-            $this->downloadRemoteMedia->save($item['url'] ?? '', $item['id']);
-            $this->thumbnails->generate($item['id'], Media::IMAGE_MEDIUM);
+			if (!Media::mediaExist($item['id'], '-m')) {
+				$this->downloadRemoteMedia->save($item['url'] ?? '', $item['id']);
+				$this->thumbnails->generate($item['id'], Media::IMAGE_MEDIUM);
+			}
 
             if (!empty($item['children'])) {
                 $this->importCarouselAlbum($item['children']);
@@ -33,7 +35,9 @@ class ImporterMediaProcessor
     private function importCarouselAlbum($children): void
     {
         foreach ($children as $child) {
-            $this->downloadRemoteMedia->save($child['url'] ?? '', $child['id']);
+			if (!Media::mediaExist($child['id'], '-l')) {
+				$this->downloadRemoteMedia->save($child['url'] ?? '', $child['id']);
+			}
         }
     }
 }

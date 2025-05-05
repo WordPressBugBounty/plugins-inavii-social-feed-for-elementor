@@ -12,6 +12,7 @@ use Inavii\Instagram\RestApi\EndPoints\Account\Cron;
 use Inavii\Instagram\RestApi\EndPoints\Account\ReconnectAccount;
 use Inavii\Instagram\RestApi\EndPoints\Account\UpdateAccount;
 use Inavii\Instagram\RestApi\EndPoints\Account\UpdateAccountBio;
+use Inavii\Instagram\RestApi\EndPoints\App\TroubleshootingController;
 use Inavii\Instagram\RestApi\EndPoints\Feeds\Feed;
 use Inavii\Instagram\RestApi\EndPoints\Feeds\FeedCreate;
 use Inavii\Instagram\RestApi\EndPoints\Feeds\FeedDelete;
@@ -45,6 +46,34 @@ class RegisterRestApi {
                 'route'    => 'app/settings/delete/allData',
                 'methods'  => 'POST',
                 'callback' => [new Settings(), 'deleteAllPlatformData'],
+            ],
+            /**
+             * Troubleshooting
+             */
+            [
+                'route'    => 'troubleshooting',
+                'methods'  => 'GET',
+                'callback' => [new TroubleshootingController(), 'checkCronStatus'],
+            ],
+            [
+                'route'    => 'troubleshooting/fix',
+                'methods'  => 'POST',
+                'callback' => [new TroubleshootingController(), 'fix'],
+            ],
+            [
+                'route'    => 'troubleshooting/cron/run',
+                'methods'  => 'POST',
+                'callback' => [new TroubleshootingController(), 'cronRun'],
+            ],
+            [
+                'route'    => 'troubleshooting/cron/run/async',
+                'methods'  => 'POST',
+                'callback' => [new TroubleshootingController(), 'cronRunAsync'],
+            ],
+            [
+                'route'    => 'troubleshooting/cron/logger',
+                'methods'  => 'GET',
+                'callback' => [new TroubleshootingController(), 'cronLogger'],
             ],
             /**
              * Accounts

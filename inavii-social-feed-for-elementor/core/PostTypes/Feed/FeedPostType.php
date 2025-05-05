@@ -106,7 +106,7 @@ class FeedPostType extends PostType
     {
         return array_map(function ($post) {
             return $this->serializeData($post);
-        }, (new Query($this->slug()))->numberOfPosts()->order('ASC')->posts()->getPosts());
+        }, (new Query($this->slug()))->numberOfPosts()->order('DESC')->posts()->getPosts());
     }
 
     public function post($postID): array

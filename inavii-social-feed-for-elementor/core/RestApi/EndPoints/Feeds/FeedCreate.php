@@ -34,6 +34,8 @@ class FeedCreate
             return $this->api->response([], false, 'Settings are required');
         }
 
+	   $title = sanitize_text_field($title);
+
         $newPostsID = $this->feed->create($title);
         $this->feed->addOrUpdateSettings($newPostsID, $settings);
         $this->feed->addFeedType($newPostsID, $feedType);

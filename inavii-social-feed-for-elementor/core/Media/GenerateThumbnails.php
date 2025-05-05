@@ -22,7 +22,7 @@ class GenerateThumbnails extends Media
 
                 $fileNameDestination = $this->getImageDir($imageID) . '-' . $sizeName;
 
-                if (file_exists($fileNameDestination)) {
+                if (file_exists($fileNameDestination . self::IMAGE_TYPE)) {
                     continue;
                 }
 

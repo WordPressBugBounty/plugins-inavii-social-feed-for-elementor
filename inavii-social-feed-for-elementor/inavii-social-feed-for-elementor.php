@@ -4,13 +4,11 @@
  * Plugin Name: Inavii for Elementor Social Feed
  * Description: Add Instagram to your website in less than a minute with our dedicated plugin for Elementor. Just 4 simple steps will allow you to display your Instagram profile on your site, captivating visitors with beautiful photos and layouts.
  * Plugin URI:  https://www.inavii.com/
- * Version:     2.7.8
+ * Version:     2.7.9
  * Author:      INAVII
  * Author URI:  https://www.inavii.com/
- * Text Domain: inavii-social-feed-e
- * Elementor tested up to: 3.23.1
+ * Elementor tested up to: 3.28.4
  * Requires PHP: 7.4
- * Domain Path: /languages
   */
 
 if (!defined('ABSPATH')) {
@@ -18,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('INAVII_SOCIAL_FEED_E_VERSION')) {
-    define('INAVII_SOCIAL_FEED_E_VERSION', '2.7.8');
+    define('INAVII_SOCIAL_FEED_E_VERSION', '2.7.9');
 
     define('INAVII_SOCIAL_FEED_E_MINIMUM_ELEMENTOR_VERSION', '3.10.0');
     define('INAVII_SOCIAL_FEED_E_MINIMUM_PHP_VERSION', '7.4');
@@ -125,10 +123,7 @@ if (!function_exists('inavii_social_feed_deactivate_actions')) {
         }
         wp_clear_scheduled_hook('inavii_social_feed_update_media');
         wp_clear_scheduled_hook('inavii_social_feed_refresh_token');
-
-        //TODO remove this in the next release
-        wp_clear_scheduled_hook('wp_importer-instagram-media_cron_interval');
-        wp_clear_scheduled_hook('wp_generate-thumbnails-media_cron_interval');
+	    delete_option('inavii_social_feed_cron_last_status');
     }
 }
 

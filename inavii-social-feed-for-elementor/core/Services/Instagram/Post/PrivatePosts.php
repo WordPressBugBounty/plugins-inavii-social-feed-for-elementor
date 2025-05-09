@@ -27,7 +27,7 @@ class PrivatePosts implements Posts
     private function requestMedia(string $accessToken, int $limit): array
     {
         return $this->getMedia(
-            $this->request->buildUrl('https://graph.instagram.com/v16.0/me/media', [
+            $this->request->buildUrl('https://graph.instagram.com/v22.0/me/media', [
                 'access_token' => $accessToken,
                 'limit' => $limit,
                 'fields' => (new FieldsBuilder(true))->getAllFieldsAsString(),

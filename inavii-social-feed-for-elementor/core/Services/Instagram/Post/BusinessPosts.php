@@ -31,7 +31,7 @@ class BusinessPosts implements Posts
     private function requestMedia(string $accessToken, int $limit): array
     {
         return $this->getMedia(
-            $this->request->buildUrl("https://graph.facebook.com/v16.0/$this->userId/media", [
+            $this->request->buildUrl("https://graph.facebook.com/v22.0/$this->userId/media", [
                 'access_token' => $accessToken,
                 'limit' => $limit,
                 'fields' => (new FieldsBuilder(true))->getAllFieldsAsString(),

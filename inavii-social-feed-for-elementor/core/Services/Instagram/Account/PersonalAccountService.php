@@ -26,7 +26,7 @@ class PersonalAccountService implements Account
      */
     public function get(): InstagramAccount
     {
-        $response = $this->integration->get('https://graph.instagram.com/v16.0/me', [
+        $response = $this->integration->get('https://graph.instagram.com/v22.0/me', [
             'fields' => 'id,username,media_count,account_type,profile_picture_url,biography',
             'access_token' => $this->accessToken,
         ]);

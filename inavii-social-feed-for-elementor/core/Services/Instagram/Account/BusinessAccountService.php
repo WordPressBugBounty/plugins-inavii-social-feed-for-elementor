@@ -26,7 +26,7 @@ class BusinessAccountService
      */
     public function get($id): InstagramAccount
     {
-        $response = $this->integration->get("https://graph.facebook.com/v16.0/$id", [
+        $response = $this->integration->get("https://graph.facebook.com/v22.0/$id", [
             'fields' => 'id,name,username,profile_picture_url,media_count,biography',
             'access_token' => $this->accessToken,
         ]);

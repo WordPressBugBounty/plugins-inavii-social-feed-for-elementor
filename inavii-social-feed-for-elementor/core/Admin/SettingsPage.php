@@ -18,6 +18,10 @@ class SettingsPage {
 
 		add_action( 'admin_menu', array( $this, 'register_page' ) );
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
+
+		add_action('admin_init', function () {
+			Troubleshooting::fixCronIssues();
+        });
 	}
 
 	public function register_page(): void {

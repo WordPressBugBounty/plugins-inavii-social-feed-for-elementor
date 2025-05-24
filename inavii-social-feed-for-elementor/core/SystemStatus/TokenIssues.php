@@ -25,7 +25,7 @@ class TokenIssues
             $issues = $account->issues();
             $lastUpdate = TimeChecker::calculateTimeDifference($account->lastUpdate());
 
-            if ($issues['reconnectRequired'] || $lastUpdate->days > 5) {
+            if ($issues['reconnectRequired'] === true || $lastUpdate->days > 14) {
                 $expiredTokenFound = true;
                 break;
             }

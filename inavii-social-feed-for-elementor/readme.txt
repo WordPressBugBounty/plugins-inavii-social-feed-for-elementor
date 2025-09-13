@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.8
-Stable tag: 2.7.11
+Stable tag: 2.7.12
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -175,6 +175,11 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 2.7.12 (2025-09-13) =
+- Updated Freemius SDK library.
+- Updated Twig library to v3.x.
+- Fixed conflict with the "Unlimited Elements For Elementor" plugin.
 
 = 2.7.11 (2025-05-24) =
 - Add: Introduced automatic troubleshooting tool that detects and repairs missing or unbound CRON jobs for media updates and token refresh.

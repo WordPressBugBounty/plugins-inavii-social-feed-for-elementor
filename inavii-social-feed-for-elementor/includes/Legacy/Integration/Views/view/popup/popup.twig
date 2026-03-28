@@ -1,0 +1,17 @@
+<div class="modal modal-inavii micromodal-slide inavii__popup{{ layout_type != '' ? ' modal-inavii__type-' ~ layout_type }}" id="modal-{{ widget_id }}" aria-hidden="true">
+    <div class="modal-inavii__overlay" tabindex="-1">
+        <div class="modal-inavii__overlay modal-inavii__overlay--pointer" tabindex="-1" data-micromodal-close></div>
+        <div class="modal-inavii__container" role="dialog" aria-modal="true"
+             aria-labelledby="modal-{{ widget_id }}">
+            <button class="modal-inavii__close" aria-label="Close modal" data-micromodal-close tabindex="0">
+                <svg viewBox="0 0 20 20">
+                    <path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"
+                          fill="#ffffff"/>
+                </svg>
+            </button>
+            <div class="modal-inavii__box">
+                {% include 'view/popup/swiper-inner.twig' %}
+            </div>
+        </div>
+    </div>
+</div>

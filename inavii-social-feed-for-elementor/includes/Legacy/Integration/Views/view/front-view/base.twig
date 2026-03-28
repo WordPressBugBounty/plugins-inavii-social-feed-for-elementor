@@ -1,0 +1,81 @@
+{% if (enable_photo_linking == "linking_post") %}
+    <a href="{{ item.permalink }}" target="{{ target }}">
+        <div class="inavii-grid__item-box">
+            {% if (item.mediaType == 'VIDEO') %}
+                {% include 'view/assets/icon-video.twig' %}
+            {% endif %}
+
+            {% if (item.mediaType == 'CAROUSEL_ALBUM') %}
+                {% include 'view/assets/icon-gallery.twig' %}
+            {% endif %}
+
+            {% if (layout_type == "cards") %}
+            <div class="inavii__media-box">
+            {% endif %}
+                {% if (item.mediaType == 'CAROUSEL_ALBUM' and item.children is not empty and item.children[0].mediaType == 'VIDEO' and item.children[0].url == '' and feed_type == 'hashtag_posts') %}
+                    <video class="inavii__video" preload="metadata" src="{{ item.children[0].videoUrl }}#t=0.001"></video>
+                {% else %}
+                    {% if (item.mediaType == 'VIDEO' and feed_type == 'hashtag_posts') %}
+                        <video class="inavii__video" preload="metadata" src="{{ item.videoUrl }}#t=0.001"></video>
+                    {% else %}
+                        <img class="inavii-grid__image"
+                             src="{{ item.mediaUrl[imageSize] }}"
+                             data-alternate-src="{{ item.alternativeUrl }}"
+                            {% if is_pro %}
+                                alt="{{ item.caption__premium_only }}"
+                            {% else %}
+                                alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                            {% endif %}
+                            {{ layout_type == 'cards' or layout_type == 'slider' ? '' : ' loading="lazy"' }}/>
+                    {% endif %}
+                {% endif %}
+            {% if (layout_type == "cards") %}
+            </div>
+            {% endif %}
+
+            {% if is_pro %}
+                {% include 'view/back-view/base.twig' %}
+            {% endif %}
+        </div>
+    </a>
+{% else %}
+    <div class="inavii-grid__item-box {%if (enable_photo_linking == "none") %}inavii-grid__item-box--pointer-none{% endif %}">
+        {% if (item.mediaType == 'VIDEO') %}
+            {% include 'view/assets/icon-video.twig' %}
+        {% endif %}
+
+        {% if (item.mediaType == 'CAROUSEL_ALBUM') %}
+            {% include 'view/assets/icon-gallery.twig' %}
+        {% endif %}
+
+        {% if (layout_type == "cards") %}
+        <div class="inavii__media-box">
+        {% endif %}
+            {% if (item.mediaType == 'CAROUSEL_ALBUM' and item.children is not empty and item.children[0].mediaType == 'VIDEO' and item.children[0].url == '' and feed_type == 'hashtag_posts') %}
+                <video class="inavii__video" preload="metadata" src="{{ item.children[0].videoUrl }}#t=0.001"
+                        {{ item.videoUrl == "" ? ' style="background-color: #ccc;"' : '' }}></video>
+            {% else %}
+                {% if (item.mediaType == 'VIDEO' and feed_type == 'hashtag_posts') %}
+                    <video class="inavii__video" preload="metadata" src="{{ item.videoUrl }}#t=0.001"
+                            {{ item.videoUrl == "" ? ' style="background-color: #ccc;"' : '' }}></video>
+                {% else %}
+                    <img class="inavii-grid__image"
+                         src="{{ item.mediaUrl[imageSize] }}"
+                         data-alternate-src="{{ item.alternativeUrl }}"
+                        {% if is_pro %}
+                            alt="{{ item.caption__premium_only }}"
+                        {% else %}
+                            alt="Instagram post from {{ item.username }}. This post is in position {{ index }}."
+                        {% endif %}
+                        {{ layout_type == 'cards' or layout_type == 'slider' ? '' : ' loading="lazy"' }}/>
+                {% endif %}
+            {% endif %}
+        {% if (layout_type == "cards") %}
+        </div>
+        {% endif %}
+
+        {% if is_pro %}
+            {% include 'view/back-view/base.twig' %}
+        {% endif %}
+    </div>
+{% endif %}

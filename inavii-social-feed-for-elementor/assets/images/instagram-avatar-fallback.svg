@@ -1,0 +1,16 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="150" rx="28" fill="white"/>
+  <rect x="22" y="22" width="106" height="106" rx="30" fill="url(#inavii_instagram_avatar_gradient)" />
+  <rect x="33" y="33" width="84" height="84" rx="24" fill="white"/>
+  <circle cx="75" cy="75" r="23" fill="url(#inavii_instagram_avatar_gradient)" />
+  <circle cx="75" cy="75" r="13.5" fill="white"/>
+  <circle cx="101.5" cy="48.5" r="6.5" fill="url(#inavii_instagram_avatar_gradient)" />
+  <defs>
+    <linearGradient id="inavii_instagram_avatar_gradient" x1="16.5" y1="132.5" x2="134.5" y2="17.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEDA75"/>
+      <stop offset="0.32" stop-color="#FA7E1E"/>
+      <stop offset="0.62" stop-color="#D62976"/>
+      <stop offset="1" stop-color="#4F5BD5"/>
+    </linearGradient>
+  </defs>
+</svg>

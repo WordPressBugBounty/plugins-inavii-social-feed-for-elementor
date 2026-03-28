@@ -3,58 +3,51 @@ Contributors: Inavii, maciejsromek, tkatra, freemius
 Plugin URI: https://www.inavii.com/
 Tags: Instagram feed, Instagram, Elementor addons, Instagram gallery, Instagram widget
 Requires at least: 5.6
-Tested up to: 6.8
-Stable tag: 2.7.12
+Tested up to: 6.9
+Stable tag: 3.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create the ultimate Instagram experience. Add Instagram feed to your Elementor site in under 60 seconds and increase your Instagram followers.
+Create the ultimate Instagram experience. Add Instagram feed to your WordPress site in under 60 seconds and increase your Instagram followers.
 
 == Description ==
 
-Say goodbye to the hassle of manually updating content on your website. With our **[Inavii Social Feed plugin](https://www.inavii.com/)**, specifically designed for Elementor-powered sites, your site will always be up-to-date with the latest posts from your Instagram profile. Simply add new content to Instagram, and your gallery on the website will automatically update.
+Say goodbye to the hassle of manually updating content on your website. With our **[Inavii Social Feed plugin](https://www.inavii.com/)**, built for the whole WordPress ecosystem, your site will always be up-to-date with the latest posts from your Instagram profile. Simply add new content to Instagram, and your gallery on the website will automatically update.
 
-<iframe width="750" height="422" src="https://www.youtube.com/embed/-K0xVGD9EX4?si=7eT7DS3_JiyoBqmD" title="How to add Your Instagram Profile to a Website Using Elementor in a Minute!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### One Plugin, Full WordPress Coverage
+
+- **Elementor Widget**: Add your Instagram feed in Elementor in just a few clicks.
+- **WordPress Block Editor**: Add your Instagram feed directly in the WordPress Block Editor.
+- **Shortcode Support**: Display feeds anywhere in WordPress, including classic editor areas, templates, and custom theme sections.
+
+No matter how you build your site, **Inavii Social Feed** fits your workflow.
+
+### Free Instagram Features You Can Use Right Away
+
+- **8 Free Instagram Layout Variants**: Slider, Masonry, Grid, Highlight, Wave, Wave Grid, Row, Gallery.
+- **Instagram Photos, Videos, Reels, and Carousels**: Display all key Instagram media types in one feed.
+- **Instagram Video Playback in Free**: Play Instagram videos and reels directly inside your website feed.
+- **Flexible Instagram Click Actions**: Open Instagram posts in popup, open on Instagram, or disable click action.
+- **Instagram Captions + Engagement Meta**: Show captions, date, likes, and comments directly in your feed.
+- **Header and Footer Controls**: Toggle avatar, name, username, follow button, and load more button.
+- **Layout and Style Controls**: Adjust columns, spacing, radius, brand color, and feed look in seconds.
+- **Free Sorting Options**: Sort posts by Most Recent, Most Popular First, or Trending + Recent.
+- **Responsive Instagram Feed**: Your Instagram feed looks great on desktop, tablet, and mobile.
+- **Mobile-Friendly Viewing**: Built-in popup mode for smooth Instagram browsing on mobile devices.
+- **Multiple Instagram Feeds**: Create and publish multiple Instagram feeds on one site.
+- **Automatic Instagram Feed Updates**: New Instagram content can appear on your site automatically.
 
 ### Recommended by the Experts
 
-Our plugin **Inavii Social Feed for Elementor** has been highlighted and recommended by experts from various renowned publications. Here are some media highlights that appreciated our solution:
+Our plugin **Inavii Social Feed has been highlighted and recommended by experts from various renowned publications. Here are some media highlights that appreciated our solution:
 
-- **Elementor**: **[12 Best Instagram Plugins for WordPress](https://elementor.com/blog/best-instagram-plugins-wordpress/)**
 - **Crocoblock**: **[13 Best WordPress Instagram Plugins for Block Editor, Elementor and Bricks](https://crocoblock.com/blog/best-wordpress-instagram-plugins/)**
+- **Elementor**: **[12 Best Instagram Plugins for WordPress](https://elementor.com/blog/best-instagram-plugins-wordpress/)**
 
 ### Seamless **Instagram** Integration
 
 **[Inavii Social Feed](https://www.inavii.com/)** is not just a tool for displaying **Instagram** content – it's your solution for easily maintaining your site's freshness and appeal. With **Instagram** integration, your **Instagram** photos and videos will always be accessible on your site, fostering deeper engagement and attracting more traffic to your **Instagram** profile.
-
-### Discover the Full Potential of **Instagram** with **Inavii**
-
-Integrating **Instagram** with your website has never been easier. Our **[Inavii Social Feed plugin](https://www.inavii.com/)** allows for complete customization of your **Instagram** feed, meaning you can adjust its look and style to perfectly match your site's aesthetics.
-
-**[Ready-Made Instagram Layouts](https://www.inavii.com/demo/):**
-
-- **Professional Instagram Design**: Choose from professionally designed **Instagram** layouts that perfectly complement your site's aesthetics.
-- **Customizable Instagram Feed Appearance**: Tailor the look of your **Instagram** feed using various beautiful layouts.
-
-**Play Instagram Videos in Lightbox/PopUp**:
-
-- **Elegant Instagram Display**: Impress your audience with **Instagram** video content displayed in a sleek Lightbox/PopUp.
-
-**Display Instagram Captions**:
-
-- **Engage Your Audience with Instagram**: Enhance your content by displaying **Instagram** captions alongside photos and videos, allowing your audience to fully enjoy your **Instagram** content.
-
-**Improve SEO with Instagram Content**:
-
-- **Boost Your Site's Visibility with Instagram**: Automatically embed **Instagram** captions into your site's source code, improving your site's visibility in search results. **Instagram** content is indexed by Google, attracting more visitors.
-
-### **[PRO Features](https://www.inavii.com/pricing/):** Maximize Your Presence on **Instagram**
-
-- **Tagged Instagram Posts**: Display tagged posts from **Instagram** directly on your site. It’s an ideal way to highlight important moments from your **Instagram** profile.
-- **Instagram Hashtag Channels**: Create channels based on selected **Instagram** hashtags, ensuring your **Instagram** feed is perfectly aligned with current trends.
-- **Combine Different Instagram Feeds**: Gain more possibilities by combining different types of **Instagram** feeds into one unique solution.
-- **Load More**: Now you can load more Instagram photos with the convenient "Load More" button, ensuring a smooth and dynamic browsing experience.
 
 ### Start Using **Instagram** in 3 Simple Steps
 
@@ -62,29 +55,8 @@ Integrating **Instagram** with your website has never been easier. Our **[Inavii
 2. **Connect Your Instagram Account**: Integrating your **Instagram** account with our plugin is quick and easy, allowing you to start using the latest **Instagram** features right away.
 3. **Display Your Instagram Feed on Your Site**: Just a few clicks to have your **Instagram** feed appear on your website. Your visitors will be able to view your latest **Instagram** content directly on your site.
 
-### Comprehensive **Inavii Social Feed** Features Across All Plans
-
-**Free Plan**:
-
-- **Full Elementor Editing Support with Instagram**: With our **[Inavii Social Feed plugin](https://www.inavii.com/)**, you can easily edit your **Instagram** feed in Elementor.
-- **Multiple Instagram Feeds**: Connect several **Instagram** accounts and display their content on your site.
-- **Instagram Photos, Videos, Reels, and Various Layout Options**: Our **[Inavii Social Feed plugin](https://www.inavii.com/)** supports all **Instagram** post formats, giving you full flexibility.
-
-**[Essentials Plan](https://www.inavii.com/pricing/):**
-
-- **Unlock All Instagram Layouts**: Access all **Instagram** layouts and personalize them to perfectly fit your site.
-- **Customize Your Instagram Feed Appearance**: With extensive customization options, your **Instagram** feed will look exactly the way you want.
-- **Instagram Video Playback, Lightbox, Captions, and SEO Enhancements**: All these features help you fully leverage **Instagram**'s potential.
-
-**[PRO Plan](https://www.inavii.com/pricing/):**
-
-- **Advanced Instagram Content Filtering**: The ability to filter **Instagram** posts is an ideal solution for advanced users.
-- **Drag and Drop Instagram Content**: Easily manage **Instagram** content with drag-and-drop functionality.
-- **Moderation and Instagram Shoppable Posts**: Use **Instagram** as a tool to promote your products and services.
-
-**[Unlimited Plan](https://www.inavii.com/pricing/):**
-
-- **Everything in Essentials and PRO, plus additional Instagram features**: Tagged and hashtag feeds, along with combined **Instagram** feeds, are just some of the additional features offered by our **[Inavii Social Feed plugin](https://www.inavii.com/pricing/)**.
+Need advanced Instagram workflows later?  
+You can upgrade anytime to **[PRO](https://www.inavii.com/pricing/)** for additional layouts, advanced moderation, hashtag/tagged feeds, **Slide-out Panel**, and advanced **Mobile Friendly** modes (**Smart Snap** and **Classic Scroll**).
 
 ### Stay Ahead with Our **Instagram Plugin**
 
@@ -92,7 +64,7 @@ Our developers are committed to ensuring that our **[Inavii Social Feed plugin](
 
 ### Make Your Website Stand Out with **Instagram**
 
-Download the **[Inavii Social Feed plugin](https://www.inavii.com/pricing/)** today and start showcasing **Instagram** content in a new, captivating way. Don't miss the opportunity to enhance your site with the latest **Instagram** content. One click is all it takes to start your new journey with **Instagram** integration.
+Download the **[Inavii Social Feed plugin](https://www.inavii.com/docs/installing-free-version/)** today and start showcasing **Instagram** content in a new, captivating way. Don't miss the opportunity to enhance your site with the latest **Instagram** content. One click is all it takes to start your new journey with **Instagram** integration.
 
 == Installation ==
 
@@ -122,7 +94,7 @@ You can install our plugin in two ways. Choose which way is more convenient for 
 
 = How can I get started with Inavii Social Feed? =
 
-Getting started is easy! [Download the plugin](https://www.inavii.com/docs/installing-free-version/) and follow the simple [installation steps](https://www.inavii.com/docs/installing-free-version/). You can also try the **Essentials** plan for free for 7 days by [clicking here](https://www.inavii.com/pricing/).
+Getting started is easy! [Download the plugin](https://www.inavii.com/docs/installing-free-version/) and follow the simple [installation steps](https://www.inavii.com/docs/installing-free-version/). You can upgrade to **PRO** anytime by [clicking here](https://www.inavii.com/pricing/).
 
 = How do I connect my Instagram account? =
 
@@ -138,19 +110,19 @@ Yes, absolutely! With **Inavii Social Feed**, you can create and display multipl
 
 = Can I display photos and videos from more than one Instagram account in a single feed? =
 
-Absolutely. **Inavii Social Feed** allows you to connect multiple Instagram accounts and combine them into a single feed. This is an ideal solution for businesses or influencers managing several Instagram profiles.
+In the free version, each feed uses one account as its source. In **PRO**, you can combine posts from multiple Instagram accounts into one feed.
 
 = How many Instagram accounts can I connect? =
 
 There is no limit to the number of Instagram accounts you can connect with **Inavii Social Feed**. Whether you manage one account or many, our plugin meets all your needs.
 
-= Can I display full-size photos and videos directly on my website? =
+= Can I display larger photos and videos directly on my website? =
 
-Yes! **Inavii Social Feed** allows you to display full-size Instagram photos and videos directly on your website using a sleek Lightbox/PopUp feature. This ensures that your visitors stay on your site while enjoying your content.
+Yes. In the free version, you can open Instagram media in a popup so visitors can view content directly on your website. In **PRO**, you also get Lightbox mode.
 
 = Can I hide or show specific posts in my Instagram feed? =
 
-Yes, with the **Moderation** feature available in the **PRO** or **Unlimited** plan, you can manually select which posts to display or hide in your Instagram feed. This gives you full control over the content displayed on your website.
+Yes, with the **Moderation** feature available in **PRO**, you can manually select which posts to display or hide in your Instagram feed. This gives you full control over the content displayed on your website.
 
 = Can I change the position of posts in my Instagram feed? =
 
@@ -158,7 +130,7 @@ Yes, with the **Drag and Drop** feature available in **Inavii Social Feed**, you
 
 = Can I customize the appearance of my Instagram feed? =
 
-Yes, with **Inavii Social Feed**, you have full control over the customization of your Instagram feed using a dedicated widget for Elementor. This powerful tool allows you to adjust every aspect of your feed, from layout and number of columns to specific post positioning using the **Drag and Drop** feature. Create a personalized and visually stunning Instagram feed that seamlessly integrates with your website's aesthetics, ensuring a unique experience for your visitors.
+Yes. **Inavii Social Feed** lets you customize your Instagram feed with controls for layout, spacing, columns, and visual style. You can add and manage feeds with the Elementor widget, WordPress Block Editor, or shortcode, so your Instagram feed matches your website design.
 
 
 == Screenshots ==
@@ -175,6 +147,14 @@ Yes, with **Inavii Social Feed**, you have full control over the customization o
 
 == Changelog ==
 
+
+= 3.0.0 (2026-03-28) =
+- Rebuilt the entire dashboard.
+- Added a new widget for the WordPress Block Editor.
+- Added shortcode support.
+- Added a new widget for Elementor.
+- Maximized V3 engine performance for faster loading and rendering.
+- Improved automatic media updates from Instagram.
 
 = 2.7.12 (2025-09-13) =
 - Updated Freemius SDK library.

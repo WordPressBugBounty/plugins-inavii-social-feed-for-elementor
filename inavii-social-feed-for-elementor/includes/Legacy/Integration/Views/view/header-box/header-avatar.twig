@@ -1,0 +1,32 @@
+<div class="inavii__header-box">
+    {% if (enable_avatar_header_box) %}
+        <a href="{{ follow_button_url }}"
+           target="_blank"
+           rel="nofollow noopener" role="button">
+            <div class="inavii__header-avatar-content">
+                <img src="{{ avatar_url }}"
+                     alt="User avatar"
+                     loading="lazy"
+                />
+            </div>
+        </a>
+    {% endif %}
+    {% if (username_header_box or enable_bio_header_box) %}
+        <div class="inavii__header-username-bio-box">
+            {% if (username_header_box) %}
+                <div class="inavii__header-bio-box">
+                    <a href="{{ follow_button_url }}"
+                       class="inavii__header-username-link"
+                       target="_blank"
+                       rel="nofollow noopener" role="button">
+                        <span class="inavii__header-username-text">{{ username }}</span>
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if enable_bio_header_box and is_pro %}
+                <span class="inavii__header-bio">{{ biography }}</span>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

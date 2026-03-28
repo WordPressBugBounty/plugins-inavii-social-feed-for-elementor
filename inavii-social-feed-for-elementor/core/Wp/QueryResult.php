@@ -1,33 +1,31 @@
 <?php
+declare( strict_types=1 );
+
 
 namespace Inavii\Instagram\Wp;
 
-class QueryResult
-{
-    private array $posts;
-    private int $total;
+class QueryResult {
 
-    public function __construct(array $posts, int $total)
-    {
-        $this->posts = $posts;
-        $this->total = $total;
-    }
+	private array $posts;
+	private int $total;
 
-    public function getPosts(): array
-    {
-        return $this->posts;
-    }
+	public function __construct( array $posts, int $total ) {
+		$this->posts = $posts;
+		$this->total = $total;
+	}
 
-    public function getTotal(): int
-    {
-        return $this->total;
-    }
+	public function getPosts(): array {
+		return $this->posts;
+	}
 
-    public function toArray(): array
-    {
-        return [
-            'posts' => $this->posts,
-            'total' => $this->total,
-        ];
-    }
+	public function getTotal(): int {
+		return $this->total;
+	}
+
+	public function toArray(): array {
+		return [
+			'posts' => $this->posts,
+			'total' => $this->total,
+		];
+	}
 }

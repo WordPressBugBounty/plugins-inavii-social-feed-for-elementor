@@ -3,7 +3,6 @@ declare( strict_types=1 );
 
 namespace Inavii\Instagram\Config\Troubleshooting;
 
-use Inavii\Instagram\Config\Env;
 use Inavii\Instagram\Media\Source\Storage\SourcesRepository;
 use Inavii\Instagram\Media\Source\Domain\Source;
 use Inavii\Instagram\Media\Source\Domain\SourceSyncPolicy;
@@ -65,13 +64,7 @@ final class HealthDiagnostics {
 	private function collectIssues(): array {
 		$issues             = [];
 		$tableStatus        = $this->tables->status();
-		$sourcesTableExists = false;
-
 		foreach ( $tableStatus as $row ) {
-			if ( $row['label'] === 'sources' ) {
-				$sourcesTableExists = (bool) $row['exists'];
-			}
-
 			if ( $row['exists'] ) {
 				continue;
 			}
@@ -165,40 +158,6 @@ final class HealthDiagnostics {
 			);
 		}
 
-		if ( $this->shouldValidateMediaDirectory( $sourcesTableExists ) ) {
-			if ( Env::$media_dir === '' ) {
-				$this->addIssue(
-					$issues,
-					'uploads_missing',
-					'error',
-					'Uploads directory is not set',
-					'Media directory path is empty, so files cannot be stored.',
-					'Verify WordPress uploads configuration.',
-					true
-				);
-			} elseif ( ! is_dir( Env::$media_dir ) ) {
-				$this->addIssue(
-					$issues,
-					'uploads_not_found',
-					'error',
-					'Media directory does not exist',
-					'The directory ' . Env::$media_dir . ' does not exist.',
-					'Create the uploads directory or re-save plugin settings.',
-					true
-				);
-			} elseif ( ! is_writable( Env::$media_dir ) ) {
-				$this->addIssue(
-					$issues,
-					'uploads_not_writable',
-					'error',
-					'Media directory is not writable',
-					'The directory ' . Env::$media_dir . ' is not writable.',
-					'Fix filesystem permissions so WordPress can write media files.',
-					true
-				);
-			}
-		}
-
 		$hasImageLib = function_exists( 'gd_info' ) || extension_loaded( 'imagick' );
 		if ( ! $hasImageLib ) {
 			$this->addIssue(
@@ -249,18 +208,6 @@ final class HealthDiagnostics {
 		}
 
 		return $issues;
-	}
-
-	private function shouldValidateMediaDirectory( bool $sourcesTableExists ): bool {
-		if ( ! $sourcesTableExists ) {
-			return false;
-		}
-
-		try {
-			return $this->sources->hasAnySources();
-		} catch ( \Throwable $e ) {
-			return false;
-		}
 	}
 
 	private function shouldReportCronRisk(): bool {

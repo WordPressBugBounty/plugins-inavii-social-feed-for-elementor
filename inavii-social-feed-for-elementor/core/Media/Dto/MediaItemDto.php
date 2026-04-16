@@ -159,12 +159,93 @@ final class MediaItemDto {
 			return $path;
 		}
 
+		$resolved = self::resolveExistingLocalPath( $path );
+		if ( $resolved === null ) {
+			return null;
+		}
+
 		$base = Env::$uploads_url !== '' ? Env::$uploads_url : Env::$media_url;
 		if ( $base === '' ) {
+			return $resolved;
+		}
+
+		return rtrim( $base, '/\\' ) . '/' . ltrim( $resolved, '/\\' );
+	}
+
+	private static function resolveExistingLocalPath( string $path ): ?string {
+		$path = trim( $path );
+		if ( $path === '' ) {
+			return null;
+		}
+
+		$absolute = self::isAbsolutePath( $path );
+		if ( $absolute ) {
+			if ( \file_exists( $path ) ) {
+				$relative = self::toUploadsRelativePath( $path );
+				return $relative ?? null;
+			}
+
+			$jpgAbs = self::replaceWebpWithJpg( $path );
+			if ( $jpgAbs !== null && \file_exists( $jpgAbs ) ) {
+				$relative = self::toUploadsRelativePath( $jpgAbs );
+				return $relative ?? null;
+			}
+
+			return null;
+		}
+
+		$base = Env::$uploads_dir !== '' ? Env::$uploads_dir : Env::$media_dir;
+		if ( $base === '' ) {
+			return null;
+		}
+
+		$base = rtrim( $base, '/\\' );
+		$abs  = $base . '/' . ltrim( $path, '/\\' );
+		if ( \file_exists( $abs ) ) {
 			return $path;
 		}
 
-		return rtrim( $base, '/\\' ) . '/' . ltrim( $path, '/\\' );
+		$jpgRel = self::replaceWebpWithJpg( $path );
+		if ( $jpgRel === null ) {
+			return null;
+		}
+
+		$jpgAbs = $base . '/' . ltrim( $jpgRel, '/\\' );
+		if ( \file_exists( $jpgAbs ) ) {
+			return $jpgRel;
+		}
+
+		return null;
+	}
+
+	private static function replaceWebpWithJpg( string $path ): ?string {
+		$jpg = preg_replace( '/\.(webp)$/i', '.jpg', $path ) ?? $path;
+		return $jpg === $path ? null : $jpg;
+	}
+
+	private static function isAbsolutePath( string $path ): bool {
+		if ( $path === '' ) {
+			return false;
+		}
+		if ( $path[0] === '/' || $path[0] === '\\' ) {
+			return true;
+		}
+		return preg_match( '/^[a-zA-Z]:[\/\\\\]/', $path ) === 1;
+	}
+
+	private static function toUploadsRelativePath( string $absolute ): ?string {
+		$base = Env::$uploads_dir !== '' ? Env::$uploads_dir : Env::$media_dir;
+		if ( $base === '' ) {
+			return null;
+		}
+
+		$base     = rtrim( str_replace( '\\', '/', $base ), '/' );
+		$absolute = str_replace( '\\', '/', $absolute );
+		if ( strpos( $absolute, $base . '/' ) !== 0 ) {
+			return null;
+		}
+
+		return ltrim( substr( $absolute, strlen( $base ) + 1 ), '/' );
 	}
 
 	/**
@@ -172,7 +253,7 @@ final class MediaItemDto {
 	 */
 	private static function buildMediaUrl( ?string $thumbnail, ?string $large ): array {
 		$thumbnail = $thumbnail ?? '';
-		$large  = $large ?? '';
+		$large     = $large ?? '';
 
 		if ( $thumbnail === '' && $large !== '' ) {
 			$thumbnail = $large;

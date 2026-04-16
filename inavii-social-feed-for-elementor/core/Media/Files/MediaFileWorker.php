@@ -81,7 +81,14 @@ final class MediaFileWorker {
 					return false;
 				}
 
-				$this->repository->files()->markPostReady( $id, $mainRel, \file_exists( $thumbAbs ) ? $thumbRel : null );
+				$mainRelResolved  = $this->resolveExistingRelPath( $mainAbs, $mainRel );
+				$thumbRelResolved = $this->resolveExistingRelPath( $thumbAbs, $thumbRel );
+
+				$this->repository->files()->markPostReady(
+					$id,
+					$mainRelResolved ?? $mainRel,
+					$thumbRelResolved
+				);
 				return true;
 			}
 
@@ -175,5 +182,27 @@ final class MediaFileWorker {
 		}
 		$width = (int) $width;
 		return $width > 0 ? $width : $default;
+	}
+
+	private function resolveExistingRelPath( string $abs, string $rel ): ?string {
+		if ( $rel === '' ) {
+			return null;
+		}
+
+		if ( \file_exists( $abs ) ) {
+			return $rel;
+		}
+
+		$jpgRel = preg_replace( '/\.(webp)$/i', '.jpg', $rel ) ?? $rel;
+		if ( $jpgRel === $rel ) {
+			return null;
+		}
+
+		$jpgAbs = preg_replace( '/\.(webp)$/i', '.jpg', $abs ) ?? $abs;
+		if ( $jpgAbs !== '' && \file_exists( $jpgAbs ) ) {
+			return $jpgRel;
+		}
+
+		return null;
 	}
 }

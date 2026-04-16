@@ -8,6 +8,7 @@ use Inavii\Instagram\Account\Cron\AccountTokenCron;
 use Inavii\Instagram\Admin\SettingsPage;
 use Inavii\Instagram\Cron\Scheduler;
 use Inavii\Instagram\Front\Shortcode;
+use Inavii\Instagram\Includes\Integration\Cache\LiteSpeedOptimizeIntegration;
 use Inavii\Instagram\Includes\Legacy\Bootstrap as LegacyBootstrap;
 use Inavii\Instagram\Includes\Legacy\Assets\LegacyFrontAssetsLoader;
 use Inavii\Instagram\Includes\Legacy\Integration\WidgetsManager as LegacyWidgetsManager;
@@ -63,6 +64,7 @@ final class Bootstrap {
 	public function boot(): void {
 		container()->get( AppGlobalSettings::class );
 		container()->get( LegacyMigrationQueue::class )->register();
+		new LiteSpeedOptimizeIntegration();
 
 		if ( Plugin::isLegacyUi() ) {
 			( new LegacyBootstrap() )->init();

@@ -24,9 +24,6 @@ use Inavii\Instagram\Media\Fetcher\UnsupportedSourceFetcher;
 use Inavii\Instagram\Media\Source\Domain\Source;
 use Inavii\Instagram\Media\Storage\MediaProFilterSqlBuilder;
 use Inavii\Instagram\Media\Storage\NoopMediaProFilterSqlBuilder;
-use Psr\Container\ContainerInterface;
-use function DI\autowire;
-use function DI\factory;
 
 /**
  * Free container module definitions.
@@ -37,11 +34,11 @@ final class FreeModule {
 	public static function definitions(): array {
 		return [
 			// --- Database (tables + installer) ---
-			DatabaseStatusStore::class       => autowire( DatabaseStatusStore::class ),
-			AccountsTable::class             => autowire( AccountsTable::class ),
+			DatabaseStatusStore::class       => DiVendorResolver::autowire( DatabaseStatusStore::class ),
+			AccountsTable::class             => DiVendorResolver::autowire( AccountsTable::class ),
 
-			'inavii.db.tables'               => factory(
-				function ( ContainerInterface $c ) {
+			'inavii.db.tables'               => DiVendorResolver::factory(
+				function ( $c ) {
 					return [
 						$c->get( AccountsTable::class ),
 						$c->get( MediaTable::class ),
@@ -54,21 +51,21 @@ final class FreeModule {
 				}
 			),
 
-			Database::class                  => factory(
-				function ( ContainerInterface $c ) {
+			Database::class                  => DiVendorResolver::factory(
+				function ( $c ) {
 					/** @var array $tables */
 					$tables = $c->get( 'inavii.db.tables' );
 					return new Database( $tables, $c->get( DatabaseStatusStore::class ) );
 				}
 			),
 
-			Install::class                   => autowire( Install::class ),
+			Install::class                   => DiVendorResolver::autowire( Install::class ),
 
-			LoggerRepository::class          => autowire( LoggerRepository::class ),
-			MediaProFilterSqlBuilder::class  => autowire( NoopMediaProFilterSqlBuilder::class ),
+			LoggerRepository::class          => DiVendorResolver::autowire( LoggerRepository::class ),
+			MediaProFilterSqlBuilder::class  => DiVendorResolver::autowire( NoopMediaProFilterSqlBuilder::class ),
 
-			'inavii.media.source_fetchers'   => factory(
-				function ( ContainerInterface $c ): array {
+			'inavii.media.source_fetchers'   => DiVendorResolver::factory(
+				function ( $c ): array {
 					return [
 						$c->get( AccountPostsFetcher::class ),
 						new UnsupportedSourceFetcher( Source::KIND_TAGGED, 'Tagged posts require the Pro version.' ),
@@ -77,8 +74,8 @@ final class FreeModule {
 				}
 			),
 
-			MediaSourceFetcher::class        => factory(
-				function ( ContainerInterface $c ): MediaSourceFetcher {
+			MediaSourceFetcher::class        => DiVendorResolver::factory(
+				function ( $c ): MediaSourceFetcher {
 					/** @var array $fetchers */
 					$fetchers = $c->get( 'inavii.media.source_fetchers' );
 
@@ -86,8 +83,8 @@ final class FreeModule {
 				}
 			),
 
-			GlobalFeedHooksRuntime::class    => autowire( NoopGlobalFeedHooks::class ),
-			GlobalFeedRendererRuntime::class => autowire( NoopGlobalFeedRenderer::class ),
+			GlobalFeedHooksRuntime::class    => DiVendorResolver::autowire( NoopGlobalFeedHooks::class ),
+			GlobalFeedRendererRuntime::class => DiVendorResolver::autowire( NoopGlobalFeedRenderer::class ),
 		];
 	}
 }

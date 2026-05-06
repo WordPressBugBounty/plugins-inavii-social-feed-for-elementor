@@ -4,7 +4,7 @@
  * Plugin Name: Inavii Social Feed
  * Description: Create beautiful Instagram feeds for your website in minutes with the Block Editor, shortcode, or Elementor widget.
  * Plugin URI:  https://www.inavii.com/
- * Version:     3.0.1
+ * Version:     3.0.2
  * Author:      INAVII
  * Author URI:  https://www.inavii.com/
  * Elementor tested up to: 4.0.2
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'INAVII_SOCIAL_FEED_E_VERSION' ) ) {
-	define( 'INAVII_SOCIAL_FEED_E_VERSION', '3.0.1' );
+	define( 'INAVII_SOCIAL_FEED_E_VERSION', '3.0.2' );
 
 	define( 'INAVII_SOCIAL_FEED_E_MINIMUM_ELEMENTOR_VERSION', '3.10.0' );
 	define( 'INAVII_SOCIAL_FEED_E_MINIMUM_PHP_VERSION', '7.4' );
@@ -45,5 +45,51 @@ if ( ! function_exists( 'inavii_social_feed_e_fs' ) ) {
 	require_once INAVII_INSTAGRAM_DIR . '/freemius.php';
 }
 
-$inavii_app = \Inavii\Instagram\Di\container()->get( \Inavii\Instagram\Config\Bootstrap::class );
-$inavii_app->init( __FILE__ );
+if ( ! function_exists( 'inavii_social_feed_e_handle_bootstrap_failure' ) ) {
+	/**
+	 * @param \Throwable $error
+	 *
+	 * @return void
+	 */
+	function inavii_social_feed_e_handle_bootstrap_failure( \Throwable $error ): void {
+		error_log(
+			sprintf(
+				'[Inavii] Bootstrap failed: %s in %s:%d',
+				$error->getMessage(),
+				$error->getFile(),
+				$error->getLine()
+			)
+		);
+
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		add_action(
+			'admin_notices',
+			static function () use ( $error ): void {
+				if ( ! current_user_can( 'manage_options' ) ) {
+					return;
+				}
+
+				$details = sprintf(
+					'%s (%s:%d)',
+					$error->getMessage(),
+					basename( $error->getFile() ),
+					(int) $error->getLine()
+				);
+
+				echo '<div class="notice notice-error"><p><strong>Inavii Social Feed:</strong> ';
+					echo esc_html__( 'Plugin initialization failed. Please contact support and include this error:', 'inavii-social-feed' );
+				echo ' <code>' . esc_html( $details ) . '</code></p></div>';
+			}
+		);
+	}
+}
+
+try {
+	$inavii_app = \Inavii\Instagram\Di\container()->get( \Inavii\Instagram\Config\Bootstrap::class );
+	$inavii_app->init( __FILE__ );
+} catch ( \Throwable $error ) {
+	inavii_social_feed_e_handle_bootstrap_failure( $error );
+}

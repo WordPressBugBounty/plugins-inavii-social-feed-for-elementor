@@ -4,7 +4,7 @@ Plugin URI: https://www.inavii.com/
 Tags: Instagram, instagram feed, instagram gallery, Instagram widget, instagram photos
 Requires at least: 5.6
 Tested up to: 6.9
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,8 +22,6 @@ Display Instagram photos, videos, Reels, and carousels in Elementor, the Block E
 1. **Connect your Instagram account**
 2. **Choose an Instagram feed layout**
 3. **Add the feed in Elementor, the Block Editor, or with shortcode**
-
-<iframe width="750" height="422" src="https://www.youtube.com/embed/e0qRwDKBsbY?si=LbRSKi6mtqSM3Sb7" title="How to Add an Instagram Feed to WordPress | Quick Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Free features
 
@@ -141,6 +139,14 @@ Yes. Inavii Social Feed includes caching for better performance, ALT text suppor
 
 == Changelog ==
 
+[//]: # shared_changelog_begin
+= 3.0.2 (2026-05-05) =
+- Added dependency isolation for core runtime libraries to better protect against third-party plugin conflicts.
+[//]: # shared_changelog_end
+
+
+= 3.0.2 (2026-05-05) =
+- Added dependency isolation for core runtime libraries to better protect against third-party plugin conflicts.
 
 = 3.0.1 (2026-04-16) =
 - Improved compatibility with LiteSpeed Cache.

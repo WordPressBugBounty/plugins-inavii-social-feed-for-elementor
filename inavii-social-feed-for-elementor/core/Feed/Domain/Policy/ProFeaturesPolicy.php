@@ -101,7 +101,28 @@ final class ProFeaturesPolicy {
 	public function canUseImageClickAction( string $action ): bool {
 		$action = strtolower( trim( $action ) );
 
-		if ( $action === 'lightbox' || $action === 'play_in_grid' || $action === 'video_box' || $action === 'none' ) {
+		if (
+			$action === 'lightbox' ||
+			$action === 'play_in_grid' ||
+			$action === 'immersive' ||
+			$action === 'video_box' ||
+			$action === 'none'
+		) {
+			return $this->isPro();
+		}
+
+		return true;
+	}
+
+	public function canUseImmersiveVideoMode( string $mode ): bool {
+		$mode = strtolower( trim( $mode ) );
+
+		if (
+			$mode === 'play_in_grid' ||
+			$mode === 'immersive' ||
+			$mode === 'video_box' ||
+			$mode === 'none'
+		) {
 			return $this->isPro();
 		}
 
@@ -152,7 +173,8 @@ final class ProFeaturesPolicy {
 			],
 			'interaction' => [
 				'lightbox'   => $this->canUseImageClickAction( 'lightbox' ),
-				'playInGrid' => $this->canUseImageClickAction( 'play_in_grid' ),
+				'playInGrid' => $this->canUseImmersiveVideoMode( 'play_in_grid' ),
+				'immersive'  => $this->canUseImmersiveVideoMode( 'immersive' ),
 			],
 		];
 	}

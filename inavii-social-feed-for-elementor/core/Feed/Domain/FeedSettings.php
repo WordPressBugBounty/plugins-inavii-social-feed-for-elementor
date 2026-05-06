@@ -356,12 +356,29 @@ final class FeedSettings {
 	 */
 	private static function normalizeClickAction( array $clickAction, ProFeaturesPolicy $proFeatures ): array {
 		$action = self::normalizeImageClickAction( $clickAction['imageClickAction'] ?? null );
+		$immersiveVideoMode = self::normalizeImmersiveVideoMode( $clickAction['immersiveVideoMode'] ?? null );
+
+		if ( $immersiveVideoMode === '' && in_array( $action, [ 'play_in_grid', 'immersive' ], true ) ) {
+			$immersiveVideoMode = $action;
+		}
+
+		if ( $immersiveVideoMode !== '' && ! $proFeatures->canUseImmersiveVideoMode( $immersiveVideoMode ) ) {
+			$immersiveVideoMode = 'static';
+		}
+
+		if ( $action === 'play_in_grid' || $action === 'immersive' ) {
+			$action = 'lightbox';
+		}
+
 		if ( $action !== '' && ! $proFeatures->canUseImageClickAction( $action ) ) {
 			$action = 'popup';
 		}
 
 		if ( $action !== '' ) {
 			$clickAction['imageClickAction'] = $action;
+		}
+		if ( $immersiveVideoMode !== '' ) {
+			$clickAction['immersiveVideoMode'] = $immersiveVideoMode;
 		}
 
 		$instagramOpenMode = self::normalizeOpenMode( $clickAction['instagramOpenMode'] ?? null );
@@ -413,6 +430,23 @@ final class FeedSettings {
 		}
 
 		return $normalized;
+	}
+
+	private static function normalizeImmersiveVideoMode( $value ): string {
+		if ( ! is_scalar( $value ) ) {
+			return '';
+		}
+
+		$normalized = strtolower( trim( (string) $value ) );
+		if ( $normalized === 'video_box' || $normalized === 'none' ) {
+			return 'play_in_grid';
+		}
+
+		if ( in_array( $normalized, [ 'static', 'play_in_grid', 'immersive' ], true ) ) {
+			return $normalized;
+		}
+
+		return '';
 	}
 
 	private static function normalizeMobileFriendlyMode( $value ): string {

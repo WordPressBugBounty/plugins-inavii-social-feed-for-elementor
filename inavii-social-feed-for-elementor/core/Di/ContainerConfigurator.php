@@ -3,22 +3,24 @@ declare(strict_types=1);
 
 namespace Inavii\Instagram\Di;
 
-use DI\ContainerBuilder;
-use Psr\Container\ContainerInterface;
 use Inavii\Instagram\Freemius\FreemiusAccess;
 
 final class ContainerConfigurator {
 	private const PRO_MODULE_CLASS = '\\Inavii\\Instagram\\Pro\\Di\\ProModule';
 
-	/** @var ContainerInterface|null */
+	/** @var object|null */
 	private static $container;
 
-	public static function container(): ContainerInterface {
-		if ( self::$container instanceof ContainerInterface ) {
+	/**
+	 * @return object
+	 */
+	public static function container() {
+		if ( is_object( self::$container ) ) {
 			return self::$container;
 		}
 
-		$builder = new ContainerBuilder();
+		$builderClass = DiVendorResolver::containerBuilderClass();
+		$builder      = new $builderClass();
 		$builder->useAutowiring( true );
 		$builder->useAnnotations( false );
 
@@ -42,7 +44,10 @@ final class ContainerConfigurator {
 
 // phpcs:disable Universal.Files.SeparateFunctionsFromOO.Mixed
 if ( ! \function_exists( __NAMESPACE__ . '\\container' ) ) {
-	function container(): ContainerInterface {
+	/**
+	 * @return object
+	 */
+	function container() {
 		return ContainerConfigurator::container();
 	}
 }

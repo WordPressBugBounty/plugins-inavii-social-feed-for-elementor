@@ -13,6 +13,7 @@ use Inavii\Instagram\Database\Tables\MediaTable;
 use Inavii\Instagram\Database\Tables\MediaChildrenTable;
 use Inavii\Instagram\Database\Tables\SourcesTable;
 use Inavii\Instagram\Database\Tables\FeedSourcesTable;
+use Inavii\Instagram\Feed\Application\MediaOrderRuntime;
 use Inavii\Instagram\Front\Application\Contracts\GlobalFeedHooksRuntime;
 use Inavii\Instagram\Front\Application\Contracts\GlobalFeedRendererRuntime;
 use Inavii\Instagram\Front\Application\NoopGlobalFeedHooks;
@@ -63,6 +64,7 @@ final class FreeModule {
 
 			LoggerRepository::class          => DiVendorResolver::autowire( LoggerRepository::class ),
 			MediaProFilterSqlBuilder::class  => DiVendorResolver::autowire( NoopMediaProFilterSqlBuilder::class ),
+			MediaOrderRuntime::class         => DiVendorResolver::autowire( MediaOrderRuntime::class ),
 
 			'inavii.media.source_fetchers'   => DiVendorResolver::factory(
 				function ( $c ): array {

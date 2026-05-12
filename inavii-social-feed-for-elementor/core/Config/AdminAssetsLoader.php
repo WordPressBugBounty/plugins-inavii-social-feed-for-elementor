@@ -3,6 +3,8 @@ declare( strict_types=1 );
 
 namespace Inavii\Instagram\Config;
 
+use Inavii\Instagram\Admin\ReviewNotice;
+use Inavii\Instagram\Admin\ReviewNoticePolicy;
 use Inavii\Instagram\Feed\Domain\Policy\ProFeaturesPolicy;
 use Inavii\Instagram\Front\Config;
 use Inavii\Instagram\Logger\Admin\DebugPage;
@@ -15,10 +17,16 @@ final class AdminAssetsLoader {
 	private const SCRIPT_DEPS    = [ 'react', 'react-dom', 'react-jsx-runtime' ];
 	private Config $frontConfig;
 	private ProFeaturesPolicy $proFeatures;
+	private ReviewNoticePolicy $reviewNoticePolicy;
 
-	public function __construct( Config $frontConfig, ProFeaturesPolicy $proFeatures ) {
-		$this->frontConfig = $frontConfig;
-		$this->proFeatures = $proFeatures;
+	public function __construct(
+		Config $frontConfig,
+		ProFeaturesPolicy $proFeatures,
+		ReviewNoticePolicy $reviewNoticePolicy
+	) {
+		$this->frontConfig        = $frontConfig;
+		$this->proFeatures        = $proFeatures;
+		$this->reviewNoticePolicy = $reviewNoticePolicy;
 	}
 
 	public function init(): void {
@@ -75,6 +83,7 @@ final class AdminAssetsLoader {
 			'assetsBase'        => $assetsUrl,
 			'debugUrl'          => $debugUrl,
 			'pricingUrl'        => PricingPage::url(),
+			'reviewNotice'      => $this->reviewNoticeBootstrap(),
 			'capabilities'      => $this->proFeatures->capabilitiesForApi(),
 			'isElementorActive' => defined( 'ELEMENTOR_VERSION' ),
 			'config'            => $this->frontConfig->all(),
@@ -104,5 +113,20 @@ final class AdminAssetsLoader {
 
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		return $page === 'inavii-instagram-settings';
+	}
+
+	/**
+	 * @return array<string,mixed>
+	 */
+	private function reviewNoticeBootstrap(): array {
+		return [
+			'enabled'       => $this->reviewNoticePolicy->shouldShow(),
+			'displayName'   => $this->reviewNoticePolicy->displayName(),
+			'pluginName'    => Plugin::name(),
+			'reviewUrl'     => ReviewNotice::REVIEW_URL,
+			'logoUrl'       => $this->reviewNoticePolicy->logoUrl(),
+			'dismissAction' => ReviewNotice::DISMISS_AJAX_ACTION,
+			'dismissNonce'  => (string) wp_create_nonce( ReviewNotice::DISMISS_NONCE_ACTION ),
+		];
 	}
 }

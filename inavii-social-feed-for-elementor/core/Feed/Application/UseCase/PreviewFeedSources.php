@@ -5,6 +5,7 @@ namespace Inavii\Instagram\Feed\Application\UseCase;
 
 use Inavii\Instagram\Account\Domain\Account;
 use Inavii\Instagram\Account\Storage\AccountRepository;
+use Inavii\Instagram\Feed\Application\MediaOrderRuntime;
 use Inavii\Instagram\Feed\Domain\FeedMediaFilters;
 use Inavii\Instagram\Feed\Domain\FeedSources;
 use Inavii\Instagram\Feed\Domain\Policy\ProFeaturesPolicy;
@@ -28,6 +29,7 @@ final class PreviewFeedSources {
 	private SourceMixModePolicy $sourceMixMode;
 	private MediaAccountProfileHydrator $profiles;
 	private ProFeaturesPolicy $proFeatures;
+	private MediaOrderRuntime $mediaOrder;
 
 	public function __construct(
 		AccountRepository $accounts,
@@ -38,7 +40,8 @@ final class PreviewFeedSources {
 		PreviewRefreshPolicy $refreshPolicy,
 		SourceMixModePolicy $sourceMixMode,
 		MediaAccountProfileHydrator $profiles,
-		ProFeaturesPolicy $proFeatures
+		ProFeaturesPolicy $proFeatures,
+		MediaOrderRuntime $mediaOrder
 	) {
 		$this->accounts      = $accounts;
 		$this->fetch         = $fetch;
@@ -49,6 +52,7 @@ final class PreviewFeedSources {
 		$this->sourceMixMode = $sourceMixMode;
 		$this->profiles      = $profiles;
 		$this->proFeatures   = $proFeatures;
+		$this->mediaOrder    = $mediaOrder;
 	}
 
 	/**
@@ -165,6 +169,7 @@ final class PreviewFeedSources {
 		$queryArgs['sourceMixMode'] = $this->sourceMixMode->resolve( $feedId, $sourceKeys, $queryArgs );
 		$items                      = $this->finder->bySourceKeysFiltered( $sourceKeys, $queryArgs, $limit, $offset );
 		$items                      = $this->profiles->hydrate( $items );
+		$items                      = $this->mediaOrder->reorderForDisplay( $items, $feedId, $limit, $offset );
 		$total                      = $this->finder->countBySourceKeysFiltered( $sourceKeys, $queryArgs );
 
 		return [

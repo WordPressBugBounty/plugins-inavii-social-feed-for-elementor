@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Inavii\Instagram\Feed\Application\UseCase;
 
+use Inavii\Instagram\Feed\Application\MediaOrderRuntime;
 use Inavii\Instagram\Feed\Domain\Exceptions\FeedNotFoundException;
 use Inavii\Instagram\Feed\Domain\MediaSlice;
 use Inavii\Instagram\Feed\Domain\Policy\SourceMixModePolicy;
@@ -18,19 +19,22 @@ final class GetMediaForView {
 	private MediaPostsFinder $finder;
 	private MediaAccountProfileHydrator $profiles;
 	private SourceMixModePolicy $sourceMixMode;
+	private MediaOrderRuntime $mediaOrder;
 
 	public function __construct(
 		FeedRepository $feeds,
 		FeedSourcesRepository $sources,
 		MediaPostsFinder $finder,
 		MediaAccountProfileHydrator $profiles,
-		SourceMixModePolicy $sourceMixMode
+		SourceMixModePolicy $sourceMixMode,
+		MediaOrderRuntime $mediaOrder
 	) {
 		$this->feeds         = $feeds;
 		$this->sources       = $sources;
 		$this->finder        = $finder;
 		$this->profiles      = $profiles;
 		$this->sourceMixMode = $sourceMixMode;
+		$this->mediaOrder    = $mediaOrder;
 	}
 
 	public function handle( int $feedId, int $limit = 30, int $offset = 0 ): MediaSlice {
@@ -49,6 +53,7 @@ final class GetMediaForView {
 		$filters['sourceMixMode'] = $this->sourceMixMode->resolve( $feedId, $sourceKeys, $filters );
 		$posts                    = $this->finder->bySourceKeysFiltered( $sourceKeys, $filters, $limit, $offset );
 		$posts                    = $this->profiles->hydrate( $posts );
+		$posts                    = $this->mediaOrder->reorderForDisplay( $posts, $feedId, $limit, $offset );
 		$total                    = $this->finder->countBySourceKeysFiltered( $sourceKeys, $filters );
 
 		return new MediaSlice( $posts, $total );

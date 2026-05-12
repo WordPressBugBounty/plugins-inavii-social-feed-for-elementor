@@ -6,6 +6,8 @@ namespace Inavii\Instagram\Media\Dto;
 use Inavii\Instagram\Config\Env;
 
 final class MediaItemDto {
+	/** @var array<string,float|null> */
+	private static array $aspectRatioCache = [];
 
 	/**
 	 * Convert DB rows (snake_case) into API payload (camelCase).
@@ -54,6 +56,7 @@ final class MediaItemDto {
 		$displayUrl = $fileUrl ?? $remoteUrl;
 		$thumbUrl   = $fileThumbUrl ?? $fileUrl ?? $remoteUrl;
 		$mediaUrl   = self::buildMediaUrl( $thumbUrl, $displayUrl );
+		$aspectRatio = self::resolveAspectRatio( $filePath, $fileThumbPath );
 
 		return [
 			'id'               => (int) ( $row['id'] ?? 0 ),
@@ -71,6 +74,7 @@ final class MediaItemDto {
 			'commentsCount'    => (int) ( $row['comments_count'] ?? 0 ),
 			'likeCount'        => (int) ( $row['likes_count'] ?? 0 ),
 			'caption'          => (string) ( $row['caption'] ?? '' ),
+			'aspectRatio'      => $aspectRatio,
 
 			'children'         => $children,
 		];
@@ -114,8 +118,13 @@ final class MediaItemDto {
 				$mediaType = (string) $child['mediaType'];
 			}
 
-			$fileUrl = isset( $file['file_path'] ) ? (string) $file['file_path'] : '';
-			$fileUrl = $fileUrl !== '' ? self::toMediaUrl( $fileUrl ) : null;
+			$filePath      = isset( $file['file_path'] ) ? (string) $file['file_path'] : '';
+			$fileThumbPath = isset( $file['file_thumb_path'] ) ? (string) $file['file_thumb_path'] : '';
+			$aspectRatio   = self::resolveAspectRatio(
+				$filePath !== '' ? $filePath : null,
+				$fileThumbPath !== '' ? $fileThumbPath : null
+			);
+			$fileUrl       = $filePath !== '' ? self::toMediaUrl( $filePath ) : null;
 
 			$url = isset( $child['url'] ) ? (string) $child['url'] : '';
 			if ( $url === '' && $mediaType !== 'VIDEO' && isset( $child['media_url'] ) ) {
@@ -139,11 +148,12 @@ final class MediaItemDto {
 			}
 
 			$out[] = [
-				'id'        => $childId !== '' ? $childId : null,
-				'mediaType' => $mediaType,
-				'mediaUrl'  => self::buildMediaUrl( $mediaUrl, $mediaUrl ),
-				'videoUrl'  => $videoUrl,
-				'permalink' => $permalink,
+				'id'          => $childId !== '' ? $childId : null,
+				'mediaType'   => $mediaType,
+				'mediaUrl'    => self::buildMediaUrl( $mediaUrl, $mediaUrl ),
+				'videoUrl'    => $videoUrl,
+				'permalink'   => $permalink,
+				'aspectRatio' => $aspectRatio,
 			];
 		}
 
@@ -246,6 +256,97 @@ final class MediaItemDto {
 		}
 
 		return ltrim( substr( $absolute, strlen( $base ) + 1 ), '/' );
+	}
+
+	private static function resolveAspectRatio( ?string ...$paths ): ?float {
+		foreach ( $paths as $path ) {
+			$ratio = self::aspectRatioFromPath( $path );
+			if ( $ratio !== null ) {
+				return $ratio;
+			}
+		}
+
+		return null;
+	}
+
+	private static function aspectRatioFromPath( ?string $path ): ?float {
+		if ( $path === null || $path === '' ) {
+			return null;
+		}
+
+		$absolute = self::resolveExistingAbsolutePath( $path );
+		if ( $absolute === null ) {
+			return null;
+		}
+
+		$cacheKey = str_replace( '\\', '/', $absolute );
+		if ( array_key_exists( $cacheKey, self::$aspectRatioCache ) ) {
+			return self::$aspectRatioCache[ $cacheKey ];
+		}
+
+		$size = @getimagesize( $absolute );
+		if ( ! is_array( $size ) ) {
+			self::$aspectRatioCache[ $cacheKey ] = null;
+			return null;
+		}
+
+		$width  = isset( $size[0] ) ? (int) $size[0] : 0;
+		$height = isset( $size[1] ) ? (int) $size[1] : 0;
+		if ( $width <= 0 || $height <= 0 ) {
+			self::$aspectRatioCache[ $cacheKey ] = null;
+			return null;
+		}
+
+		$ratio = round( $width / $height, 6 );
+		self::$aspectRatioCache[ $cacheKey ] = $ratio;
+		return $ratio;
+	}
+
+	private static function resolveExistingAbsolutePath( string $path ): ?string {
+		$path = trim( $path );
+		if ( $path === '' ) {
+			return null;
+		}
+
+		if ( strpos( $path, 'http://' ) === 0 || strpos( $path, 'https://' ) === 0 || strpos( $path, '//' ) === 0 ) {
+			return null;
+		}
+
+		if ( self::isAbsolutePath( $path ) ) {
+			if ( \file_exists( $path ) ) {
+				return $path;
+			}
+
+			$jpgAbs = self::replaceWebpWithJpg( $path );
+			if ( $jpgAbs !== null && \file_exists( $jpgAbs ) ) {
+				return $jpgAbs;
+			}
+
+			return null;
+		}
+
+		$base = Env::$uploads_dir !== '' ? Env::$uploads_dir : Env::$media_dir;
+		if ( $base === '' ) {
+			return null;
+		}
+
+		$base = rtrim( $base, '/\\' );
+		$abs  = $base . '/' . ltrim( $path, '/\\' );
+		if ( \file_exists( $abs ) ) {
+			return $abs;
+		}
+
+		$jpgRel = self::replaceWebpWithJpg( $path );
+		if ( $jpgRel === null ) {
+			return null;
+		}
+
+		$jpgAbs = $base . '/' . ltrim( $jpgRel, '/\\' );
+		if ( \file_exists( $jpgAbs ) ) {
+			return $jpgAbs;
+		}
+
+		return null;
 	}
 
 	/**

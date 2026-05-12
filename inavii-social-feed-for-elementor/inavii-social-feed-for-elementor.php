@@ -4,7 +4,7 @@
  * Plugin Name: Inavii Social Feed
  * Description: Create beautiful Instagram feeds for your website in minutes with the Block Editor, shortcode, or Elementor widget.
  * Plugin URI:  https://www.inavii.com/
- * Version:     3.0.2
+ * Version:     3.0.3
  * Author:      INAVII
  * Author URI:  https://www.inavii.com/
  * Elementor tested up to: 4.0.2
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'INAVII_SOCIAL_FEED_E_VERSION' ) ) {
-	define( 'INAVII_SOCIAL_FEED_E_VERSION', '3.0.2' );
+	define( 'INAVII_SOCIAL_FEED_E_VERSION', '3.0.3' );
 
 	define( 'INAVII_SOCIAL_FEED_E_MINIMUM_ELEMENTOR_VERSION', '3.10.0' );
 	define( 'INAVII_SOCIAL_FEED_E_MINIMUM_PHP_VERSION', '7.4' );

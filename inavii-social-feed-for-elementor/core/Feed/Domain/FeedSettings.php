@@ -366,7 +366,7 @@ final class FeedSettings {
 			$immersiveVideoMode = 'static';
 		}
 
-		if ( $action === 'play_in_grid' || $action === 'immersive' ) {
+		if ( $action === 'play_in_grid' ) {
 			$action = 'lightbox';
 		}
 
@@ -397,7 +397,7 @@ final class FeedSettings {
 	private static function normalizeMobileFriendly( array $mobileFriendly, ProFeaturesPolicy $proFeatures ): array {
 		$mode = self::normalizeMobileFriendlyMode( $mobileFriendly['mode'] ?? null );
 		if ( $mode === '' ) {
-			$mobileFriendly['mode'] = self::FREE_MOBILE_FRIENDLY_MODE;
+			unset( $mobileFriendly['mode'] );
 
 			return $mobileFriendly;
 		}
@@ -455,7 +455,7 @@ final class FeedSettings {
 		}
 
 		$normalized = strtolower( trim( (string) $value ) );
-		if ( in_array( $normalized, [ 'popup', 'classic_scroll', 'smart_snap' ], true ) ) {
+		if ( in_array( $normalized, [ 'popup', 'classic_scroll', 'smart_snap', 'immersive_view' ], true ) ) {
 			return $normalized;
 		}
 

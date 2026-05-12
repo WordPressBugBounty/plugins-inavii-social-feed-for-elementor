@@ -5,6 +5,7 @@ namespace Inavii\Instagram\Config;
 
 use Inavii\Instagram\Account\Cron\AccountStatsCron;
 use Inavii\Instagram\Account\Cron\AccountTokenCron;
+use Inavii\Instagram\Admin\ReviewNotice;
 use Inavii\Instagram\Admin\SettingsPage;
 use Inavii\Instagram\Cron\Scheduler;
 use Inavii\Instagram\Front\Shortcode;
@@ -78,6 +79,7 @@ final class Bootstrap {
 		if ( is_admin() ) {
 			SettingsPage::instance();
 			new DebugPage();
+			container()->get( ReviewNotice::class )->register();
 
 			$adminAssets = container()->get( AdminAssetsLoader::class );
 			$adminAssets->init();

@@ -11,10 +11,6 @@ final class ProFeaturesPolicy {
 
 	/** @var string[] */
 	private const PRO_LAYOUT_VARIANTS = [
-		'grid_cards',
-		'highlight_discovery',
-		'highlight_super',
-		'masonry_cards',
 		'slider_cards',
 		'showcase',
 		'infinite',
@@ -78,7 +74,7 @@ final class ProFeaturesPolicy {
 	public function canUseMobileFriendlyMode( string $mode ): bool {
 		$mode = strtolower( trim( $mode ) );
 
-		if ( $mode === 'smart_snap' || $mode === 'classic_scroll' ) {
+		if ( $mode === 'smart_snap' || $mode === 'classic_scroll' || $mode === 'immersive_view' ) {
 			return $this->isPro();
 		}
 
@@ -159,17 +155,18 @@ final class ProFeaturesPolicy {
 				'customLinks'       => $this->canUseCustomLinks(),
 			],
 			'design'      => [
-				'slideOutPanel'         => $this->canUseSlideOutPanel(),
-				'globalFeedVisibility'  => $this->canUseGlobalFeedVisibility(),
-				'mobileModeSmartSnap'   => $this->canUseMobileFriendlyMode( 'smart_snap' ),
+				'slideOutPanel'           => $this->canUseSlideOutPanel(),
+				'globalFeedVisibility'    => $this->canUseGlobalFeedVisibility(),
+				'mobileModeSmartSnap'     => $this->canUseMobileFriendlyMode( 'smart_snap' ),
 				'mobileModeClassicScroll' => $this->canUseMobileFriendlyMode( 'classic_scroll' ),
-				'layoutGridCards'       => $this->canUseLayoutVariant( 'grid', 'grid_cards' ),
+				'mobileModeImmersiveView' => $this->canUseMobileFriendlyMode( 'immersive_view' ),
+				'layoutGridCards'         => $this->canUseLayoutVariant( 'grid', 'grid_cards' ),
 				'layoutHighlightDiscovery' => $this->canUseLayoutVariant( 'highlight', 'highlight_discovery' ),
-				'layoutHighlightSuper'  => $this->canUseLayoutVariant( 'highlight', 'highlight_super' ),
-				'layoutMasonryCards'    => $this->canUseLayoutVariant( 'masonry', 'masonry_cards' ),
-				'layoutSliderCards'     => $this->canUseLayoutVariant( 'slider', 'slider_cards' ),
-				'layoutSliderShowcase'  => $this->canUseLayoutVariant( 'slider', 'showcase' ),
-				'layoutSliderInfinite'  => $this->canUseLayoutVariant( 'slider', 'infinite' ),
+				'layoutHighlightSuper'    => $this->canUseLayoutVariant( 'highlight', 'highlight_super' ),
+				'layoutMasonryCards'      => $this->canUseLayoutVariant( 'masonry', 'masonry_cards' ),
+				'layoutSliderCards'       => $this->canUseLayoutVariant( 'slider', 'slider_cards' ),
+				'layoutSliderShowcase'    => $this->canUseLayoutVariant( 'slider', 'showcase' ),
+				'layoutSliderInfinite'    => $this->canUseLayoutVariant( 'slider', 'infinite' ),
 			],
 			'interaction' => [
 				'lightbox'   => $this->canUseImageClickAction( 'lightbox' ),

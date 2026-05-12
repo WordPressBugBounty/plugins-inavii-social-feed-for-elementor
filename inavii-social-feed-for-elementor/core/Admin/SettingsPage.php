@@ -172,9 +172,9 @@ class SettingsPage {
 		}
 
 		echo '<style>
-			body.toplevel_page_inavii-instagram-settings #wpbody-content > .updated,
-			body.toplevel_page_inavii-instagram-settings #wpbody-content > .notice,
-			body.toplevel_page_inavii-instagram-settings #wpbody-content > .error,
+			body.toplevel_page_inavii-instagram-settings #wpbody-content > .updated:not(.inavii-review-notice),
+			body.toplevel_page_inavii-instagram-settings #wpbody-content > .notice:not(.inavii-review-notice),
+			body.toplevel_page_inavii-instagram-settings #wpbody-content > .error:not(.inavii-review-notice),
 			body.toplevel_page_inavii-instagram-settings #wpbody-content > .update-nag,
 			body.toplevel_page_inavii-instagram-settings #wpbody-content > .woodmart-msg,
 			body.toplevel_page_inavii-instagram-settings #wpbody-content > .dup-updated,
@@ -222,17 +222,25 @@ class SettingsPage {
 					z-index: 9998;
 				}
 
+				html[dir="rtl"] #inavii-admin-app-loader.inavii-admin-loader {
+					inset: 32px 160px 0 0;
+				}
+
 			html.inavii-admin-app-ready #inavii-admin-app-loader.inavii-admin-loader {
 				opacity: 0;
 				pointer-events: none;
 				visibility: hidden;
 			}
 
-			@media (max-width: 960px) {
-				#inavii-admin-app-loader.inavii-admin-loader {
-					inset: 32px 0 0 36px;
+				@media (max-width: 960px) {
+					#inavii-admin-app-loader.inavii-admin-loader {
+						inset: 32px 0 0 36px;
+					}
+
+					html[dir="rtl"] #inavii-admin-app-loader.inavii-admin-loader {
+						inset: 32px 36px 0 0;
+					}
 				}
-			}
 
 			@media (max-width: 782px) {
 				#inavii-social-feed-app {

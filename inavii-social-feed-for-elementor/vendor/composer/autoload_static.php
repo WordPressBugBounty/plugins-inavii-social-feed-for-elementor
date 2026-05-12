@@ -20,73 +20,73 @@ class ComposerStaticInit53b929071dc9e14e6f7b4f148a5496f7
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' =>
+        'T' => 
         array (
             'Twig\\' => 5,
             'Timber\\' => 7,
         ),
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'I' =>
+        'I' => 
         array (
             'Inavii\\Instagram\\Tests\\' => 23,
             'Inavii\\Instagram\\Includes\\' => 26,
             'Inavii\\Instagram\\' => 17,
             'InaviiSocialFeedVendor\\' => 23,
         ),
-        'C' =>
+        'C' => 
         array (
             'Composer\\Installers\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Twig\\' =>
+        'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Timber\\' =>
+        'Timber\\' => 
         array (
             0 => __DIR__ . '/..' . '/timber/timber/src',
         ),
-        'Symfony\\Polyfill\\Php81\\' =>
+        'Symfony\\Polyfill\\Php81\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
-        'Symfony\\Polyfill\\Php80\\' =>
+        'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' =>
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Ctype\\' =>
+        'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Inavii\\Instagram\\Tests\\' =>
+        'Inavii\\Instagram\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'Inavii\\Instagram\\Includes\\' =>
+        'Inavii\\Instagram\\Includes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
-        'Inavii\\Instagram\\' =>
+        'Inavii\\Instagram\\' => 
         array (
             0 => __DIR__ . '/../..' . '/core',
         ),
-        'InaviiSocialFeedVendor\\' =>
+        'InaviiSocialFeedVendor\\' => 
         array (
             0 => __DIR__ . '/../..' . '/vendor-prefixed',
         ),
-        'Composer\\Installers\\' =>
+        'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
@@ -315,6 +315,8 @@ class ComposerStaticInit53b929071dc9e14e6f7b4f148a5496f7
         'Inavii\\Instagram\\Account\\Fetcher\\TokenFetcher' => __DIR__ . '/../..' . '/core/Account/Fetcher/TokenFetcher.php',
         'Inavii\\Instagram\\Account\\Storage\\AccountRepository' => __DIR__ . '/../..' . '/core/Account/Storage/AccountRepository.php',
         'Inavii\\Instagram\\Account\\Token\\AccessTokenCipher' => __DIR__ . '/../..' . '/core/Account/Token/AccessTokenCipher.php',
+        'Inavii\\Instagram\\Admin\\ReviewNotice' => __DIR__ . '/../..' . '/core/Admin/ReviewNotice.php',
+        'Inavii\\Instagram\\Admin\\ReviewNoticePolicy' => __DIR__ . '/../..' . '/core/Admin/ReviewNoticePolicy.php',
         'Inavii\\Instagram\\Admin\\SettingsPage' => __DIR__ . '/../..' . '/core/Admin/SettingsPage.php',
         'Inavii\\Instagram\\Config\\AdminAssetsLoader' => __DIR__ . '/../..' . '/core/Config/AdminAssetsLoader.php',
         'Inavii\\Instagram\\Config\\Bootstrap' => __DIR__ . '/../..' . '/core/Config/Bootstrap.php',
@@ -346,6 +348,7 @@ class ComposerStaticInit53b929071dc9e14e6f7b4f148a5496f7
         'Inavii\\Instagram\\Di\\DiVendorResolver' => __DIR__ . '/../..' . '/core/Di/DiVendorResolver.php',
         'Inavii\\Instagram\\Di\\FreeModule' => __DIR__ . '/../..' . '/core/Di/FreeModule.php',
         'Inavii\\Instagram\\Feed\\Application\\FeedService' => __DIR__ . '/../..' . '/core/Feed/Application/FeedService.php',
+        'Inavii\\Instagram\\Feed\\Application\\MediaOrderRuntime' => __DIR__ . '/../..' . '/core/Feed/Application/MediaOrderRuntime.php',
         'Inavii\\Instagram\\Feed\\Application\\UseCase\\AutoFeedTitleGenerator' => __DIR__ . '/../..' . '/core/Feed/Application/UseCase/AutoFeedTitleGenerator.php',
         'Inavii\\Instagram\\Feed\\Application\\UseCase\\CreateFeed' => __DIR__ . '/../..' . '/core/Feed/Application/UseCase/CreateFeed.php',
         'Inavii\\Instagram\\Feed\\Application\\UseCase\\DeleteFeed' => __DIR__ . '/../..' . '/core/Feed/Application/UseCase/DeleteFeed.php',
@@ -560,6 +563,7 @@ class ComposerStaticInit53b929071dc9e14e6f7b4f148a5496f7
         'Inavii\\Instagram\\Media\\Storage\\NoopMediaProFilterSqlBuilder' => __DIR__ . '/../..' . '/core/Media/Storage/NoopMediaProFilterSqlBuilder.php',
         'Inavii\\Instagram\\Pro\\Di\\ProModule' => __DIR__ . '/../..' . '/core/Pro/Di/ProModule.php',
         'Inavii\\Instagram\\Pro\\Feed\\Domain\\Policy\\GlobalDisplayPolicy' => __DIR__ . '/../..' . '/core/Pro/Feed/Domain/Policy/GlobalDisplayPolicy.php',
+        'Inavii\\Instagram\\Pro\\Feed\\Domain\\Policy\\MediaOrderPolicy' => __DIR__ . '/../..' . '/core/Pro/Feed/Domain/Policy/MediaOrderPolicy.php',
         'Inavii\\Instagram\\Pro\\Front\\Application\\GlobalFeedProjectionService' => __DIR__ . '/../..' . '/core/Pro/Front/Application/GlobalFeedProjectionService.php',
         'Inavii\\Instagram\\Pro\\Front\\Application\\GlobalFeedRenderer' => __DIR__ . '/../..' . '/core/Pro/Front/Application/GlobalFeedRenderer.php',
         'Inavii\\Instagram\\Pro\\Front\\Application\\Hooks\\GlobalFeedHooks' => __DIR__ . '/../..' . '/core/Pro/Front/Application/Hooks/GlobalFeedHooks.php',

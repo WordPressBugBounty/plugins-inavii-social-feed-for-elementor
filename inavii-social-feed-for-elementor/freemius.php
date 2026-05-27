@@ -20,7 +20,7 @@ if ( !function_exists( 'inavii_social_feed_e_fs' ) ) {
                     'is_premium'       => false,
                     'premium_suffix'   => '(PRO)',
                     'trial'            => [
-                        'days'               => 3,
+                        'days'               => 7,
                         'is_require_payment' => true,
                     ],
                     'has_addons'       => false,

@@ -3,8 +3,8 @@ Contributors: Inavii, maciejsromek, tkatra, freemius
 Plugin URI: https://www.inavii.com/
 Tags: Instagram, instagram feed, instagram gallery, Instagram widget, instagram photos
 Requires at least: 5.6
-Tested up to: 6.9
-Stable tag: 3.0.3
+Tested up to: 7.0
+Stable tag: 3.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -180,6 +180,9 @@ Yes. Inavii Social Feed includes caching for better performance, ALT text suppor
 6. Inavii dashboard for creating, customizing, and managing Instagram feeds in WordPress.
 
 == Changelog ==
+
+= 3.0.4 (2026-05-27) =
+- Added contextual feature descriptions in the dashboard to better explain feed settings and options.
 
 = 3.0.3 (2026-05-12) =
 - Added new layouts: Highlight Super, Highlight Discovery, Grid Cards, Masonry Cards.

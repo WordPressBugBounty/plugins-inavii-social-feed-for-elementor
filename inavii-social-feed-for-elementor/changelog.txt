@@ -1,6 +1,9 @@
 
 [//]: # fs_premium_only_begin
 
+= 3.0.4 (2026-05-27) =
+- Added contextual feature descriptions in the dashboard to better explain feed settings and options.
+
 = 3.0.3 (2026-05-12) =
 - Added new layouts: Highlight Super, Highlight Discovery, Grid Cards, Masonry Cards.
 

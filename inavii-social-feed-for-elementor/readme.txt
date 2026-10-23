@@ -1,4 +1,4 @@
-=== Inavii Social Photo Feed - Social Gallery, Slider & Widget ===
+=== Inavii Social Feed – Live Social Proof Gallery ===
 Contributors: Inavii, maciejsromek, tkatra, freemius
 Plugin URI: https://www.inavii.com/
 Tags: Instagram, instagram feed, instagram gallery, Instagram widget, instagram photos
@@ -9,9 +9,10 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Instagram feed plugin for WordPress. Add Instagram galleries, sliders, widgets and Reels in Elementor, Block Editor or shortcode.
+Instagram feed plugin for WordPress. Turn Instagram posts, Reels and galleries into live social proof for a fresh, active, and trusted site.
 
 == Description ==
+[youtube  https://www.youtube.com/watch?v=XRsXW_HzyHM]
 
 ### Instagram Feed Plugin for WordPress
 
